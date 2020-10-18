@@ -1,0 +1,172 @@
+{{> sidebarLeft}}
+
+{{> sidebarRight}}
+
+
+<div class="base__container">
+
+  <div class="project__header">
+    <form class="ui form " method="POST" action="/project/{{project._id}}/edit">
+      <div class="ui card">
+        <div class="content">
+          <div class="header">
+            <div class="field">
+              <input type="text" value="{{project.title}}" name='title' class="form-control">
+            </div>
+          </div>
+          <div class="meta">
+            <div class="right floated">
+              <div class="field">
+                <select class="ui fluid dropdown" name="status">
+                  <option value="{{project.status}}">{{project.status}}</option>
+                  <option value="Closed">Closed</option>
+                  <option value="Closed">Reopen</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <textarea type="text" name='title' class="form-control">{{project.description}}</textarea>
+          </div>
+          <button type="submit" class="ui fluid yellow right floated">
+            <i class="save large outline icon"></i>
+          </button>
+        </div>
+    </form>
+  </div>
+  
+</div>
+
+<div class="project__contents">
+
+  <div class="project__contents__container">
+    <div class="project__content">
+      <form class="ui form " method="POST" action="/project/{{project._id}}/edit">
+        <table class="ui table">
+          <div class="project__content__header">
+            <h3>MVP</h3>
+            <button type="submit" class="ui fluid yellow ">
+              <i class="save large outline icon"></i>
+            </button>
+          </div>
+          <thead>
+            <tr>
+              <th class="ten wide">
+                Item
+              </th>
+              <th class="six wide">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each project.mvp}}
+            <tr>
+              <td>
+                <div class="field">
+                  <input type="text" value="{{this.item}}" name='mvp[item]' class="form-control">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <select class="ui fluid dropdown" name="mvp[status]">
+                    <option value="{{this.status}}">{{this.status}}</option>
+                    <option value="Closed">Closed</option>
+                    <option value="Reopen">Reopen</option>
+                  </select>
+                </div>
+              </td>
+            </tr>
+            {{/each}}
+
+          </tbody>
+        </table>
+      </form>
+    </div>
+    {{!-- 
+    <div class="project__content">
+      <table class="ui table">
+        <div class="project__content__header">
+          <h3>Backlog</h3>
+          <a href="{{project.post._id}}/edit" id="post__button">
+            <i class="edit outline icon"></i>
+          </a>
+        </div>
+        <thead>
+          <tr>
+            <th class="ten wide">
+              Item
+            </th>
+            <th class="six wide">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each project.backlog}}
+          <tr>
+            <td>{{this.item}}</td>
+            <td>{{this.status}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div> --}}
+    {{!-- 
+  <div class="project__contents__container">
+    <div class="project__content">
+      <table class="ui table">
+        <div class="project__content__header">
+          <h3>Task</h3>
+          <a href="{{project.post._id}}/edit" id="post__button">
+            <i class="edit outline icon"></i>
+          </a>
+        </div>
+        <thead>
+          <tr>
+            <th class="ten wide">
+              Item
+            </th>
+            <th class="six wide">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each project.task}}
+          <tr>
+            <td>{{this.item}}</td>
+            <td>{{this.status}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="project__content">
+      <table class="ui table">
+        <div class="project__content__header">
+          <h3>Route</h3>
+          <a href="{{project.post._id}}/edit" id="post__button">
+            <i class="edit outline icon"></i>
+          </a>
+        </div>
+        <thead>
+          <tr>
+            <th class="ten wide">
+              Item
+            </th>
+            <th class="six wide">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each project.route}}
+          <tr>
+            <td>{{this.item}}</td>
+            <td>{{this.status}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div> --}}
+
+    {{!-- </div> --}}
+
+
+  </div>

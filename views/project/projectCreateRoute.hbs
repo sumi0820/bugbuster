@@ -1,0 +1,55 @@
+{{> sidebarLeft}}
+
+{{> sidebarRight}}
+
+<div class="base__container">
+  <div class="form__container">
+    <div class="form__containerChild">
+      <form class="ui form " method="POST" action="/project/create/{{project._id}}/route">
+        <h2>Create New Project</h2>
+
+        <label>Route</label>
+        <div class="three fields">
+          <div class="field">
+            <input name="route" type="text" class="form-control" id="route" placeholder="1">
+          </div>
+          <div class="field">
+            <input name="route" type="text" class="form-control" id="route" placeholder="2">
+          </div>
+          <div class="field">
+            <input name="route" type="text" class="form-control" id="route" placeholder="3">
+          </div>
+        </div>
+        <div class="three fields">
+          <div class="field">
+            <input name="route" type="text" class="form-control" id="route" placeholder="4">
+          </div>
+          <div class="field">
+            <input name="route" type="text" class="form-control" id="route" placeholder="5">
+          </div>
+          <div class="field">
+            <input name="route" type="text" class="form-control" id="route" placeholder="6">
+          </div>
+        </div>
+        <div class="three fields">
+          <div class="field">
+            <input name="route" type="text" class="form-control" id="route" placeholder="7">
+          </div>
+          <div class="field">
+            <input name="route" type="text" class="form-control" id="route" placeholder="8">
+          </div>
+          <div class="field">
+            <input name="route" type="text" class="form-control" id="route" placeholder="9">
+          </div>
+        </div>
+
+
+
+        <button type="submit" class="ui fluid large teal  button">
+          Go To Next<i class="angle double right icon"></i>
+        </button>
+      </form>
+
+    </div>
+  </div>
+</div>

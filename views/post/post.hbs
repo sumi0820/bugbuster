@@ -1,0 +1,148 @@
+{{> sidebarLeft}}
+
+{{> sidebarRight}}
+
+
+<div class="base__container">
+
+  {{#if postInfo}}
+  <div class="ui raised link card">
+    <div class="content">
+      <div class="header">
+        <h2>{{postInfo.post.title}}</h2>
+      </div>
+      <div class="meta">
+        <span class="category">{{postInfo.post.issueType}} : </span>
+        <span class="category">{{postInfo.post.category}}</span>
+        <div class="right floated">
+          <span class="date"> Posted on {{dateFormat postInfo.post.createdAt "MMMM Do YYYY"}} </span>
+        </div>
+      </div>
+      <div class="description">
+        <p>{{postInfo.post.description}}</p>
+      </div>
+
+    </div>
+    <div class="extra content">
+      <div class="left floated post__buttons">
+        <a href="{{postInfo.post._id}}/edit" id="post__button">
+          <button class="ui yellow button">
+            <i class="edit outline icon"></i>
+            Edit
+          </button>
+        </a>
+      </div>
+      <div class="right floated author">
+        <img class="ui avatar image" src="{{postInfo.post.user.image}}"> {{postInfo.post.user.username}}
+      </div>
+    </div>
+  </div>
+  {{/if}}
+
+  {{#if likedChecked}}
+  <div class="ui raised link card">
+    <div class="content">
+      <div class="header">
+        <h2>{{likedChecked.post.title}}</h2>
+      </div>
+      <div class="meta">
+        <span class="category">{{likedChecked.post.issueType}} : </span>
+        <span class="category">{{likedChecked.post.category}}</span>
+        <div class="right floated">
+          <span class="date"> Posted on {{dateFormat likedChecked.post.createdAt "MMMM Do YYYY"}} </span>
+        </div>
+      </div>
+      <div class="description">
+        <p>{{likedChecked.post.description}}</p>
+      </div>
+    </div>
+    <div class="extra content">
+      <div class="left floated post__buttons">
+        {{#if likedChecked.likedChecked}}
+        <form action="{{likedChecked.post._id}}/unlike" method="POST">
+          <button class="post__like" type="submit">
+            <div class="ui labeled button">
+              <div class="ui red button">
+                <i class="heart icon"></i> Unlike
+              </div>
+              <a class="ui basic red left pointing label">
+                {{likedChecked.post.like.length}}
+              </a>
+            </div>
+          </button>
+        </form>
+        {{else}}
+        <form action="{{likedChecked.post._id}}/liked" method="POST">
+          <button class="post__like" type="submit">
+            <div class="ui labeled button">
+              <div class="ui red button">
+                <i class="heart outline icon"></i>Like
+              </div>
+              <a class="ui basic red left pointing label">
+                {{likedChecked.post.like.length}}
+              </a>
+            </div>
+          </button>
+        </form>
+        {{/if}}
+      </div>
+      <div class="ui labeled button">
+        <a href="/posts/{{likedChecked.post._id}}/review" id='post__review'>
+          <div class="ui grey button" id='post__review'>
+            <i class="comment outline icon"></i>
+            Review
+        </a>
+      </div>
+      <a class="ui basic left pointing grey label" href="/posts/{{likedChecked.post._id}}/review">
+        {{likedChecked.post.review.length}}
+      </a>
+    </div>
+    <div class="right floated author">
+      <img class="ui avatar image" src="{{likedChecked.post.user.image}}"> {{likedChecked.post.user.username}}
+    </div>
+  </div>
+</div>
+
+
+{{#if likedChecked.post.review}}
+<div class="post__comments">
+  <h2>Review</h2>
+
+  {{#each likedChecked.post.review}}
+  <div class="ui raised link card">
+    <div class="content">
+      <div class="header">
+      </div>
+      <div class="meta">
+        <span class="category">
+          <img class="ui avatar image" src="{{this.user.image}}">
+          {{this.user.username}}
+        </span>
+        <div class="right floated">
+          <span class="date"> Created on {{dateFormat this.createdAt "MMMM Do YYYY"}} </span>
+        </div>
+      </div>
+      <div class="description">
+        <p>{{this.comment}}</p>
+      </div>
+    </div>
+    <div class="extra content">
+      {{!-- <div class="right floated author">
+        <img class="ui avatar image" src="{{this.user.image}}"> Submitted by {{this.user.username}}
+      </div> --}}
+    </div>
+  </div>
+  {{/each}}
+</div>
+{{else}}
+<div class="post__comments">
+  <h3>
+    There's no review yet...
+  </h3>
+</div>
+
+{{/if}}
+
+{{/if}}
+
+</div>

@@ -1,0 +1,60 @@
+{{> sidebarLeft}}
+
+{{> sidebarRight}}
+
+<div class="base__container">
+  <div class="form__container">
+    <div class="form__containerChild">
+      <form class="ui form " method="POST" action="/post/create">
+        <h2>Create New Post</h2>
+
+        <div class="field">
+          <label for="title">Issue Title</label>
+          <input name="title" type="text" class="form-control" id="title">
+        </div>
+
+        <div class="field">
+          <label for="description">Description</label>
+          <textarea name="description" type="text" class="form-control" id="description"></textarea>
+        </div>
+
+        <div class="two fields">
+
+          <div class="field">
+            <label>Issue On</label>
+            <select class="ui fluid dropdown" name="issueType">
+              <option  value="">Please select</option>
+              <option value="classActivity">Class Activity</option>
+              <option value="lab">LAB</option>
+              <option value="project">Project</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Category</label>
+            <select class="ui fluid dropdown" name="category">
+              <option  value="">Please select</option>
+              <option value="HTML">HTML</option>
+              <option value="CSS">CSS</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="Node.js">Node.js</option>
+              <option value="Express.js">Express.js</option>
+              <option value="MongoDB">MongoDB</option>
+              <option value="React">React</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="field">
+          <label for="link">Upload image</label>
+          <input name="link" type="text" class="form-control" id="link">
+        </div>
+
+        <button type="submit" class="ui fluid large teal  button">Post</button>
+      </form>
+
+    </div>
+  </div>
+</div>

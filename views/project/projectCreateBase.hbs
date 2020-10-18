@@ -1,0 +1,168 @@
+{{> sidebarLeft}}
+
+{{> sidebarRight}}
+
+<div class="base__container">
+  <div class="form__container">
+    <div class="form__containerChild">
+      <form class="ui form " method="POST" action="/project/create">
+        <h2>Create New Project</h2>
+
+        <div class="field">
+          <label for="title">Project Title</label>
+          <input name="title" type="text" class="form-control" id="title">
+        </div>
+
+        <div class="field">
+          <label for="description">Description</label>
+          <textarea name="description" type="text" class="form-control" id="description"></textarea>
+        </div>
+        {{!-- 
+        <label>MVP</label>
+        <div class="three fields">
+          <div class="field">
+            <input name="mvp" type="text" class="form-control" id="mvp" placeholder="1">
+          </div>
+          <div class="field">
+            <input name="mvp" type="text" class="form-control" id="mvp" placeholder="2">
+          </div>
+          <div class="field">
+            <input name="mvp" type="text" class="form-control" id="mvp" placeholder="3">
+          </div>
+        </div>
+        <div class="three fields">
+          <div class="field">
+            <input name="mvp" type="text" class="form-control" id="mvp" placeholder="4">
+          </div>
+          <div class="field">
+            <input name="mvp" type="text" class="form-control" id="mvp" placeholder="5">
+          </div>
+          <div class="field">
+            <input name="mvp" type="text" class="form-control" id="mvp" placeholder="6">
+          </div>
+        </div>
+        <div class="three fields">
+          <div class="field">
+            <input name="mvp" type="text" class="form-control" id="mvp" placeholder="7">
+          </div>
+          <div class="field">
+            <input name="mvp" type="text" class="form-control" id="mvp" placeholder="8">
+          </div>
+          <div class="field">
+            <input name="mvp" type="text" class="form-control" id="mvp" placeholder="9">
+          </div>
+        </div>
+
+        <label>Backlog</label>
+        <div class="three fields">
+          <div class="field">
+            <input name="backlog" type="text" class="form-control" id="backlog" placeholder="1">
+          </div>
+          <div class="field">
+            <input name="backlog" type="text" class="form-control" id="backlog" placeholder="2">
+          </div>
+          <div class="field">
+            <input name="backlog" type="text" class="form-control" id="backlog" placeholder="3">
+          </div>
+        </div>
+        <div class="three fields">
+          <div class="field">
+            <input name="backlog" type="text" class="form-control" id="backlog" placeholder="4">
+          </div>
+          <div class="field">
+            <input name="backlog" type="text" class="form-control" id="backlog" placeholder="5">
+          </div>
+          <div class="field">
+            <input name="backlog" type="text" class="form-control" id="backlog" placeholder="6">
+          </div>
+        </div>
+        <div class="three fields">
+          <div class="field">
+            <input name="backlog" type="text" class="form-control" id="backlog" placeholder="7">
+          </div>
+          <div class="field">
+            <input name="backlog" type="text" class="form-control" id="backlog" placeholder="8">
+          </div>
+          <div class="field">
+            <input name="backlog" type="text" class="form-control" id="backlog" placeholder="9">
+          </div>
+        </div>
+
+        <label>Task</label>
+        <div class="three fields">
+          <div class="field">
+            <input name="task" type="text" class="form-control" id="task" placeholder="1">
+          </div>
+          <div class="field">
+            <input name="task" type="text" class="form-control" id="task" placeholder="2">
+          </div>
+          <div class="field">
+            <input name="task" type="text" class="form-control" id="task" placeholder="3">
+          </div>
+        </div>
+        <div class="three fields">
+          <div class="field">
+            <input name="task" type="text" class="form-control" id="task" placeholder="4">
+          </div>
+          <div class="field">
+            <input name="task" type="text" class="form-control" id="task" placeholder="5">
+          </div>
+          <div class="field">
+            <input name="task" type="text" class="form-control" id="task" placeholder="6">
+          </div>
+        </div>
+        <div class="three fields">
+          <div class="field">
+            <input name="task" type="text" class="form-control" id="task" placeholder="7">
+          </div>
+          <div class="field">
+            <input name="task" type="text" class="form-control" id="task" placeholder="8">
+          </div>
+          <div class="field">
+            <input name="task" type="text" class="form-control" id="task" placeholder="9">
+          </div>
+        </div>
+
+        <label>Route</label>
+        <div class="three fields">
+          <div class="field">
+            <input name="route" type="text" class="form-control" id="route" placeholder="1">
+          </div>
+          <div class="field">
+            <input name="route" type="text" class="form-control" id="route" placeholder="2">
+          </div>
+          <div class="field">
+            <input name="route" type="text" class="form-control" id="route" placeholder="3">
+          </div>
+        </div>
+        <div class="three fields">
+          <div class="field">
+            <input name="route" type="text" class="form-control" id="route" placeholder="4">
+          </div>
+          <div class="field">
+            <input name="route" type="text" class="form-control" id="route" placeholder="5">
+          </div>
+          <div class="field">
+            <input name="route" type="text" class="form-control" id="route" placeholder="6">
+          </div>
+        </div>
+        <div class="three fields">
+          <div class="field">
+            <input name="route" type="text" class="form-control" id="route" placeholder="7">
+          </div>
+          <div class="field">
+            <input name="route" type="text" class="form-control" id="route" placeholder="8">
+          </div>
+          <div class="field">
+            <input name="route" type="text" class="form-control" id="route" placeholder="9">
+          </div>
+        </div> --}}
+
+        <button type="submit" class="ui fluid large teal  button">
+          Go To Next<i class="angle double right icon"></i>
+        </button>
+      </form>
+
+    </div>
+  </div>
+</div>

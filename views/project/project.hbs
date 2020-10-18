@@ -1,0 +1,152 @@
+{{> sidebarLeft}}
+
+{{> sidebarRight}}
+
+
+<div class="base__container">
+  <div class="project__header">
+    <div class="ui card">
+      <div class="content">
+        <div class="header">
+          <h2>{{projectCleanUp.title}}</h2>
+        </div>
+        <div class="meta">
+          <p>{{projectCleanUp.user.username}}</p>
+          <div class="right floated">
+            <p>{{dateFormat projectCleanUp.createdAt "MMMM Do YYYY"}}</p>
+            <p>{{projectCleanUp.status}}</p>
+            <a href="/project/{{projectCleanUp._id}}/edit" id="post__button">
+              <button class="ui yellow button">
+                <i class="edit outline icon"></i>
+                Edit
+              </button>
+            </a>
+          </div>
+
+        </div>
+        <p>{{projectCleanUp.description}}</p>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="project__contents">
+
+    <div class="project__contents__container">
+      <div class="project__content">
+        <table class="ui table">
+          <div class="project__content__header">
+            <h3>MVP</h3>
+            <a href="{{postInfo.post._id}}/edit" id="post__button">
+              <i class="edit outline icon"></i>
+            </a>
+          </div>
+          <thead>
+            <tr>
+              <th class="ten wide">
+                Item
+              </th>
+              <th class="six wide">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each projectCleanUp.mvp}}
+            <tr>
+              <td>{{this.item}}</td>
+              <td>{{this.status}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="project__content">
+        <table class="ui table">
+          <div class="project__content__header">
+            <h3>Backlog</h3>
+            <a href="{{postInfo.post._id}}/edit" id="post__button">
+              <i class="edit outline icon"></i>
+            </a>
+          </div>
+          <thead>
+            <tr>
+              <th class="ten wide">
+                Item
+              </th>
+              <th class="six wide">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each projectCleanUp.backlog}}
+            <tr>
+              <td>{{this.item}}</td>
+              <td>{{this.status}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="project__contents__container">
+      <div class="project__content">
+        <table class="ui table">
+          <div class="project__content__header">
+            <h3>Task</h3>
+            <a href="{{postInfo.post._id}}/edit" id="post__button">
+              <i class="edit outline icon"></i>
+            </a>
+          </div>
+          <thead>
+            <tr>
+              <th class="ten wide">
+                Item
+              </th>
+              <th class="six wide">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each projectCleanUp.task}}
+            <tr>
+              <td>{{this.item}}</td>
+              <td>{{this.status}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="project__content">
+        <table class="ui table">
+          <div class="project__content__header">
+            <h3>Route</h3>
+            <a href="{{postInfo.post._id}}/edit" id="post__button">
+              <i class="edit outline icon"></i>
+            </a>
+          </div>
+          <thead>
+            <tr>
+              <th class="ten wide">
+                Item
+              </th>
+              <th class="six wide">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each projectCleanUp.route}}
+            <tr>
+              <td>{{this.item}}</td>
+              <td>{{this.status}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+

@@ -1,0 +1,35 @@
+{{> sidebarLeft}}
+
+{{> sidebarRight}}
+
+<div class="base__container">
+  <div class="form__container">
+    <div class="form__containerChild">
+      <form class="ui form " method="POST" action="/dashboard/{{user._id}}/edit" enctype="multipart/form-data">
+        <h2>Edit Your Profile</h2>
+
+        <div class="field">
+          <label for="username">Username</label>
+          <input name="username" type="text" class="form-control" id="username" value="{{user.username}}">
+        </div>
+
+        <div class="field">
+          <label for="bio">Bio</label>
+          <textarea name="bio" type="text" class="form-control" id="bio">{{user.bio}}</textarea>
+        </div>
+
+
+        <div class="field">
+          <label for="image">Upload image</label>
+          <input name="image" type="file" class="form-control" id="image">
+        </div>
+
+        <button type="submit" class="ui fluid large yellow button">
+          <i class="edit outline icon"></i>
+          Edit
+        </button>
+      </form>
+
+    </div>
+  </div>
+</div>

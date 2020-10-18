@@ -1,0 +1,324 @@
+@import url("https://use.typekit.net/ygp8kyv.css");
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #F8C305; }
+
+a {
+  color: #1f3c88;
+  text-decoration: none; }
+
+h1 {
+  font-family: cooper-black-std, serif;
+  font-weight: 400;
+  font-style: normal; }
+
+h3 {
+  font-family: allotrope, sans-serif;
+  font-weight: 700;
+  font-style: normal; }
+
+/*========== Landing ===========*/
+.fp-tableCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; }
+
+nav {
+  position: fixed;
+  height: 50px;
+  display: block;
+  width: 100%;
+  z-index: 9;
+  text-align: center;
+  top: 0px;
+  padding: 20px 40px 0 40px; }
+
+.s2,
+.s4 {
+  background-color: white; }
+
+.landing__sections {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.landing__section {
+  height: 100vh; }
+
+.landing__copy__main {
+  font-size: 100px; }
+
+.landing__copy {
+  font-size: 80px; }
+
+.landing__section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%; }
+
+.landing__copy {
+  margin: 0 50px; }
+
+.landing__img {
+  object-fit: contain;
+  width: 650px;
+  margin: 0 50px; }
+
+.landing__buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 30px; }
+
+.landing__button {
+  margin: 0 20px; }
+
+.intro {
+  background: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.slider {
+  background: #61696d;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateY(100%); }
+
+.intro-text {
+  color: #e9e9e9;
+  font-family: "Heebo", sans-serif;
+  font-size: 3rem; }
+
+.hide {
+  background: black;
+  overflow: hidden; }
+
+.hide span {
+  transform: translateY(100%);
+  display: inline-block; }
+
+/*========== Nav ===========*/
+.logo {
+  object-fit: contain;
+  height: 50px; }
+
+/*========== Side ===========*/
+/* The side navigation menu */
+.sidebarLeft {
+  margin: 0;
+  padding: 0 50px;
+  width: 300px;
+  top: 0;
+  left: 0;
+  background-color: white;
+  position: fixed;
+  height: 100vh;
+  overflow: auto; }
+
+.sidebar__contents__texts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; }
+
+.sidebarRight__contents {
+  display: flex;
+  justify-content: space-around; }
+
+.sidebarRight {
+  margin: 0;
+  padding-top: 10px;
+  width: 350px;
+  right: 0;
+  top: 0;
+  background-color: white;
+  position: fixed;
+  height: 100vh;
+  overflow: auto; }
+
+/* Sidebar links */
+.sidebarLeft a,
+.sidebarRight a {
+  display: block;
+  color: black;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+
+/* Links on mouse-over */
+.sidebarLeft a:hover:not(.active) {
+  background-color: #555;
+  color: white; }
+
+.sidebarRight a:hover:not(.active) {
+  background-color: #555;
+  color: white; }
+
+.sidebar__search,
+.sidebar__text {
+  display: flex;
+  align-items: center; }
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 1300px) {
+  .sidebarLeft,
+  .sidebarRight {
+    width: 100%;
+    height: auto;
+    position: relative; }
+  .sidebarLeft a,
+  .sidebarRight a {
+    float: none;
+    display: block; }
+  .sidebar__contents__texts {
+    display: flex;
+    padding: 0 50px; }
+  .sidebarRight__contents {
+    display: flex;
+    padding: 0 50px; } }
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .sidebarLeft a,
+  .sidebarRight a {
+    text-align: center;
+    float: none; }
+  .sidebar__contents {
+    width: 100px; }
+  .sidebarRight__contents {
+    display: flex;
+    flex-direction: column; } }
+
+/*========== Posts ===========*/
+.posts__container,
+.base__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 0; }
+
+.ui.card {
+  margin: 0em 0; }
+
+.ui.card,
+.ui.cards > .card {
+  width: 600px; }
+
+/*========== Post ===========*/
+.post__buttons {
+  display: flex; }
+
+.post__like {
+  padding: 0;
+  border: none;
+  background: none; }
+
+#post__review {
+  color: white; }
+
+.post__comments {
+  margin: 50px; }
+
+.form__container {
+  padding: 20px;
+  height: 800px;
+  width: 100%;
+  position: relative; }
+
+.form__containerChild {
+  position: absolute;
+  padding: 30px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 500px;
+  height: 650px; }
+
+/*========== Dashboard ===========*/
+.user__container__profile {
+  display: flex; }
+
+.user__container__description {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  width: 500px; }
+
+.user__container__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.dashboard__button {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 20px; }
+
+.user__container__posts {
+  display: flex;
+  width: 650px;
+  justify-content: space-between; }
+
+#user__post {
+  width: 300px; }
+
+/*========== Form ===========*/
+.form__container {
+  padding: 20px;
+  height: 800px;
+  width: 100%;
+  position: relative; }
+
+.form__containerChild {
+  position: absolute;
+  padding: 30px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 500px;
+  height: 650px; }
+
+/*========== Project ===========*/
+.project__header {
+  display: flex;
+  justify-content: center;
+  width: 700px; }
+
+.project__contents {
+  margin-top: 50px;
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column; }
+
+.project__contents__container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px; }
+
+.project__content {
+  width: 100%;
+  margin: 0 5px; }
+
+.project__content__header {
+  display: flex;
+  justify-content: space-between; }
+
+/*# sourceMappingURL=style.css.map */

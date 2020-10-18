@@ -1,0 +1,29 @@
+{{> sidebarLeft}}
+
+{{> sidebarRight}}
+
+<div class="base__container">
+  <div class="form__container">
+    <div class="form__containerChild">
+      <form class="ui form " method="POST" action="review">
+        <h2>Add Your Review</h2>
+
+        <div class="field">
+          <label for="description">Comment</label>
+          <textarea name="comment" type="text" class="form-control" id="review"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="image">Upload image</label>
+          <input name="image" type="text" class="form-control" id="image">
+        </div>
+
+        <button type="submit" class="ui fluid large yellow button">
+          <i class="edit outline icon"></i>
+          Add Review
+        </button>
+      </form>
+
+    </div>
+  </div>
+</div>

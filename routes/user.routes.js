@@ -3,6 +3,9 @@ const router = express.Router();
 const UserModel = require("../models/User.model");
 const PostModel = require("../models/Post.model");
 
+const upload = require("../config/cloudinary.config");
+require("../config/cloudinary.config");
+
 const { parser, storage } = require("../config/cloudinary.config");
 const ProjectModel = require("../models/Project.model");
 
@@ -64,32 +67,23 @@ router.get("/dashboard/:userId/edit", (req, res) => {
 
 router.post("/dashboard/:userId/edit", parser.single("image"), (req, res) => {
   let userId = req.params.userId;
-  console.log(req.file); // to see what is returned to you
+  // console.log(req.file);
+  UserModel.findByIdAndUpdate(userId, {
+    image: req.file.path,
+    ...req.body,
+  })
+    .then((data) => {
+      // console.log(data);
 
-  const image = {};
-  image.url = req.file.url;
-  image.id = req.file.public_id;
-  Image.create(image)
-    .then((newImage) => {
-      console.log("image uploaded:", newImage);
-      res.json(newImage);
-
-      UserModel.findByIdAndUpdate(userId, {
-        image: newImage.url,
-        ...req.body,
-      })
-        .then((data) => {
-          console.log(data);
-
-          res.locals.loggedInUser = req.session.loggedInUser;
-          let userId = res.locals.loggedInUser._id;
-          res.redirect(`/dashboard/${userId}`);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      res.locals.loggedInUser = req.session.loggedInUser;
+      let userId = res.locals.loggedInUser._id;
+      res.redirect(`/dashboard/${userId}`);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+    });
+
 });
 
 module.exports = router;
+

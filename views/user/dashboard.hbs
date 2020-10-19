@@ -14,11 +14,11 @@
       </div>
       <div class="extra content">
         <span class="floated">
-          Joined in {{profile.user.timestamp}}
+          Joined in {{dateFormat profile.user.createdAt "MMMM Do YYYY"}}
         </span>
       </div>
       <div class="dashboard__button">
-        <a class="item" href="/project/{{project._id}}/edit">
+        <a class="item" href="/dashboard/{{profile.user._id}}/edit">
           <h3>Edit Profile</h3>
         </a>
       </div>
@@ -58,7 +58,7 @@
         {{#each profile.yourProjects}}
         <div class="ui cards">
           <div class="card" id="user__post">
-            <a class="content" href="/projects/{{this._id}}">
+            <a class="content" href="/project/{{this._id}}">
               <div class="header">{{this.title}}</div>
               <div class="description">
                 {{this.description}}
@@ -67,10 +67,10 @@
                 {{this.status}}
               </div>
             </a>
-            <a href="/projects/{{this._id}}">
+            <a href="/project/{{this._id}}">
               <div class="ui bottom attached button">
                 <i class="add icon"></i>
-                <a href="/projects/{{this._id}}">Detail</a>
+                <a href="/project/{{this._id}}">Detail</a>
               </div>
             </a>
           </div>
@@ -121,3 +121,4 @@
         {{/each}}
       </div>
     </div>
+

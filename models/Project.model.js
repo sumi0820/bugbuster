@@ -11,40 +11,38 @@ const projectSchema = new mongoose.Schema(
       type: String,
       text: true,
     },
-    user: 
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+    },
+    // mvp: [
+    //   {
+    //   item:String,
+    //   status: {
+    //     type: String,
+    //     default: "Open"
+    //   }
+    // }],
+    task: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "user",
-      }
-    ,
-    mvp: [{
-      item:String,
-      status: {
-        type: String,
-        default: "Open"
-      }
-    }],
-    task: [{
-      item:String,
-      status: {
-        type: String,
-        default: "Open"
-      }
-    }],
-    backlog: [{
-      item:String,
-      status: {
-        type: String,
-        default: "Open"
-      }
-    }],
-    route: [{
-      item:String,
-      status: {
-        type: String,
-        default: "Open"
-      }
-    }],
+        ref: "task",
+      },
+    ],
+    // backlog: [{
+    //   item:String,
+    //   status: {
+    //     type: String,
+    //     default: "Open"
+    //   }
+    // }],
+    // route: [{
+    //   item:String,
+    //   status: {
+    //     type: String,
+    //     default: "Open"
+    //   }
+    // }],
     // model: [
     //   {
     //     type: mongoose.Schema.Types.ObjectId,

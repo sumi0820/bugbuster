@@ -96,9 +96,9 @@ nav {
   height: 100%;
   transform: translateY(100%); }
 
-.intro-text {
+.intro-text > .hide > span {
   color: #e9e9e9;
-  font-family: "Heebo", sans-serif;
+  font-family: cooper-black-std, serif;
   font-size: 3rem; }
 
 .hide {
@@ -108,6 +108,15 @@ nav {
 .hide span {
   transform: translateY(100%);
   display: inline-block; }
+
+@media screen and (max-width: 1440px) {
+  .landing__copy {
+    font-size: 55px;
+    font-weight: 400; }
+  .landing__img {
+    object-fit: contain;
+    width: 500px;
+    margin: 0 50px; } }
 
 /*========== Nav ===========*/
 .logo {
@@ -172,23 +181,64 @@ nav {
   display: flex;
   align-items: center; }
 
+.main__nav__links {
+  position: fixed;
+  background-color: #F8C305;
+  height: 100vh;
+  width: 50%;
+  list-style: none;
+  display: none;
+  justify-content: center;
+  z-index: 0; }
+
 /* On screens that are less than 700px wide, make the sidebar into a topbar */
 @media screen and (max-width: 1300px) {
+  body {
+    padding: 0;
+    margin: 0; }
   .sidebarLeft,
   .sidebarRight {
+    display: none; }
+  .main__nav {
+    height: 10vh;
     width: 100%;
-    height: auto;
+    background-color: white;
     position: relative; }
-  .sidebarLeft a,
-  .sidebarRight a {
-    float: none;
-    display: block; }
-  .sidebar__contents__texts {
+  .hamburger {
+    position: absolute;
+    cursor: pointer;
+    right: 5%;
+    top: 50%;
+    transform: translate(-5%, -50%);
+    z-index: 2; }
+  .line {
+    width: 30px;
+    height: 3px;
+    background-color: black;
+    margin: 5px;
+    z-index: 2; }
+  .main__nav__links {
+    position: fixed;
+    background-color: white;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    list-style: none;
     display: flex;
-    padding: 0 50px; }
-  .sidebarRight__contents {
-    display: flex;
-    padding: 0 50px; } }
+    flex-direction: column;
+    align-items: center;
+    clip-path: circle(100px at 90% -30%);
+    -webkit-clip-path: circle(100px at 90% -30%);
+    pointer-events: none;
+    transition: all 1s ease-out; }
+  .main__nav__links.open {
+    top: 0;
+    left: 0;
+    clip-path: circle(100px at 100% -20%);
+    -webkit-clip-path: circle(2000px at 90% -20%);
+    transition: all 1s ease-out;
+    pointer-events: all; } }
 
 /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
 @media screen and (max-width: 400px) {

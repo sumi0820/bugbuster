@@ -25,36 +25,19 @@
     </div>
 
   </div>
+</div>
 
+<div class="ui two column stackable centered grid">
 
-  <div class="base__container">
-    <div class="user__container__posts">
-      <div class="user__container__left">
-        <div class="user__container__header">
-          <h2>Your Project</h2>
-          <a class="item" href="/project/create">
-            <i class="plus large circle icon"></i>
-          </a>
-        </div>
-
-        <div class="ui cards">
-          <div class="card" id="user__post">
-            <div class="content">
-              <div class="header">Project Name</div>
-              <div class="description">
-                Elliot Fu is a film-maker from New York.
-              </div>
-              <div class="status">
-                Open
-              </div>
-            </div>
-            <div class="ui bottom attached button">
-              <i class="add icon"></i>
-              <a href="/dashboard/:userId/:projectId">Detail</a>
-            </div>
-          </div>
-        </div>
-
+  <div class="four column centered row">
+    <div class="column">
+      <div class="user__container__header">
+        <h2>Your Project</h2>
+        <a class="item" href="/project/create">
+          <i class="plus large circle icon"></i>
+        </a>
+      </div>
+      <div class="ui centered cards">
         {{#each profile.yourProjects}}
         <div class="ui cards">
           <div class="card" id="user__post">
@@ -76,49 +59,38 @@
           </div>
         </div>
         {{/each}}
-
-      </div>
-      
-      <div class="user__container__right">
-        <div class="user__container__header">
-          <h2>Your Latest Posts</h2>
-
-          {{!-- <form class="ui form">
-            <div class="field">
-              <select class="ui fluid dropdown">
-                <option value="">Sort By</option>
-                <option value="AL">Pending</option>
-                <option value="AK">Closed</option>
-              </select>
-            </div>
-          </form> --}}
-
-          <a class="item" href="/post/create">
-            <i class="plus large circle icon"></i>
-          </a>
-
-        </div>
-        {{#each profile.yourPosts}}
-        <div class="ui cards">
-          <div class="card" id="user__post">
-            <a class="content" href="/posts/{{this._id}}">
-              <div class="header">{{this.title}}</div>
-              <div class="description">
-                {{this.description}}
-              </div>
-              <div class="status">
-                {{this.status}}
-              </div>
-            </a>
-            <a href="/posts/{{this._id}}">
-              <div class="ui bottom attached button">
-                <i class="add icon"></i>
-                <a href="/posts/{{this._id}}">Detail</a>
-              </div>
-            </a>
-          </div>
-        </div>
-        {{/each}}
       </div>
     </div>
 
+    <div class="column">
+      <div class="user__container__header">
+        <h2>Your Latest Posts</h2>
+        <a class="item" href="/post/create">
+          <i class="plus large circle icon"></i>
+        </a>
+
+      </div>
+      {{#each profile.yourPosts}}
+      <div class="ui centered cards">
+        <div class="card" id="user__post">
+          <a class="content" href="/posts/{{this._id}}">
+            <div class="header">{{this.title}}</div>
+            <div class="description">
+              {{this.description}}
+            </div>
+            <div class="status">
+              {{this.status}}
+            </div>
+          </a>
+          <a href="/posts/{{this._id}}">
+            <div class="ui bottom attached button">
+              <i class="add icon"></i>
+              <a href="/posts/{{this._id}}">Detail</a>
+            </div>
+          </a>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</div>

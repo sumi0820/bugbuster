@@ -1,0 +1,36 @@
+{{> sidebarLeft}}
+
+{{> sidebarRight}}
+
+<div class="base__container">
+  <div class="form__container">
+    <div class="form__containerChild">
+      <form class="ui form " method="POST" action="/project/{{task._id}}/editTask">
+        <h2>Create New Task</h2>
+
+        {{!-- <label>Item</label> --}}
+        <div class="two fields">
+          <div class="field">
+            <input name="item" type="text" class="form-control" id="task" value="{{task.item}}">
+          </div>
+          <div class="field">
+            <select class="ui fluid dropdown" name="status">
+              <option value="{{task.status}}">{{task.status}}</option>
+              <option value="Closed">Closed</option>
+              <option value="Reopen">Reopen</option>
+            </select>
+          </div>
+
+        </div>
+        <button type="submit" class="ui fluid large teal button">
+          Add<i class="angle double right icon"></i>
+        </button>
+      </form>
+      <form class="ui form " method="POST" action="/project/{{task._id}}/deleteTask">
+        <button type="submit" class="ui fluid large red button">
+          Delete<i class="angle double right icon"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -144,7 +144,8 @@ nav {
 
 .sidebarRight__contents {
   display: flex;
-  justify-content: space-around; }
+  justify-content: space-around;
+  margin-top: 20px; }
 
 .sidebarRight {
   margin: 0;
@@ -311,7 +312,7 @@ nav {
 
 .user__container__header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center; }
 
 .dashboard__button {
@@ -370,5 +371,11 @@ nav {
 .project__content__header {
   display: flex;
   justify-content: space-between; }
+
+.project__text_container {
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 /*# sourceMappingURL=style.css.map */

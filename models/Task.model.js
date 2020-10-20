@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 
 const taskSchema = new mongoose.Schema(
   {
-    task: String,
+    item: String,
     status: {
       type: String,
       default: "Open",
     },
-    type: String,
+    // type: String,
     project: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "project",

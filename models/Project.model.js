@@ -11,44 +11,20 @@ const projectSchema = new mongoose.Schema(
       type: String,
       text: true,
     },
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
-    },
-    // mvp: [
-    //   {
-    //   item:String,
-    //   status: {
-    //     type: String,
-    //     default: "Open"
-    //   }
-    // }],
-    task: [
+    user: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "task",
+        ref: "user",
       },
     ],
-    // backlog: [{
-    //   item:String,
-    //   status: {
-    //     type: String,
-    //     default: "Open"
-    //   }
-    // }],
-    // route: [{
-    //   item:String,
-    //   status: {
-    //     type: String,
-    //     default: "Open"
-    //   }
-    // }],
-    // model: [
+    // task: [
     //   {
     //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "backlog",
+    //     ref: "task",
     //   },
     // ],
+    github: { type: String, default: "https://github.com/" },
+
     status: {
       type: String,
       default: "Open",

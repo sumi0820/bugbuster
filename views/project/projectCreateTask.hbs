@@ -6,49 +6,23 @@
   <div class="form__container">
     <div class="form__containerChild">
       <form class="ui form " method="POST" action="/project/create/{{project._id}}/task">
-        <h2>Create New Project</h2>
+        <h2>Create New Task</h2>
 
-
-        <label>Task</label>
-        <div class="three fields">
+        {{!-- <label>Item</label> --}}
+        <div class="two fields">
           <div class="field">
-            <input name='task' type="text" class="form-control" id="task" placeholder="1">
+            <input name="item" type="text" class="form-control" id="task" placeholder="Item">
           </div>
-          {{!-- <div class="field">
-            <input name='task' type="text" class="form-control" id="task" placeholder="2">
-          </div>
+          <button type="submit" class="ui fluid large teal  button">
+            Add<i class="angle double right icon"></i>
+          </button>
+          {{!--           
           <div class="field">
-            <input name='task' type="text" class="form-control" id="task" placeholder="3">
-          </div>
-        </div>
-        <div class="three fields">
-          <div class="field">
-            <input name='task' type="text" class="form-control" id="task" placeholder="4">
-          </div>
-          <div class="field">
-            <input name='task' type="text" class="form-control" id="task" placeholder="5">
-          </div>
-          <div class="field">
-            <input name='task' type="text" class="form-control" id="task" placeholder="6">
-          </div>
-        </div>
-        <div class="three fields">
-          <div class="field">
-            <input name='task' type="text" class="form-control" id="task" placeholder="7">
-          </div>
-          <div class="field">
-            <input name='task' type="text" class="form-control" id="task" placeholder="8">
-          </div>
-          <div class="field">
-            <input name='task' type="text" class="form-control" id="task" placeholder="9">
+            <input name="task" type="text" class="form-control" id="task" placeholder="">
           </div> --}}
         </div>
 
 
-
-        <button type="submit" class="ui fluid large teal  button">
-          Go To Next<i class="angle double right icon"></i>
-        </button>
       </form>
 
     </div>

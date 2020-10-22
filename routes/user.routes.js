@@ -2,12 +2,11 @@ const express = require("express");
 const router = express.Router();
 const UserModel = require("../models/User.model");
 const PostModel = require("../models/Post.model");
+const ProjectModel = require("../models/Project.model");
 
 const upload = require("../config/cloudinary.config");
 require("../config/cloudinary.config");
-
 const { parser, storage } = require("../config/cloudinary.config");
-const ProjectModel = require("../models/Project.model");
 
 router.get("/dashboard/:userId", (req, res, next) => {
   let userId = req.params.userId;
@@ -36,8 +35,6 @@ router.get("/dashboard/:userId", (req, res, next) => {
           .then((projects) => {
             let yourProjects = projects
               .filter((project) => {
-                console.log(project.user);
-
                 return project.user.email == user.email;
               })
               .splice(0, 5)
@@ -51,6 +48,7 @@ router.get("/dashboard/:userId", (req, res, next) => {
                 }
               });
             let profile = { user, yourPosts, yourProjects };
+            console.log(projects);
             res.render("user/dashboard", { profile });
           });
       });
@@ -67,7 +65,8 @@ router.get("/dashboard/:userId/edit", (req, res) => {
 
 router.post("/dashboard/:userId/edit", parser.single("image"), (req, res) => {
   let userId = req.params.userId;
-  // console.log(req.file);
+  console.log(req.file);
+  
   UserModel.findByIdAndUpdate(userId, {
     image: req.file.path,
     ...req.body,
@@ -82,8 +81,6 @@ router.post("/dashboard/:userId/edit", parser.single("image"), (req, res) => {
     .catch((err) => {
       console.log(err);
     });
-
 });
 
 module.exports = router;
-

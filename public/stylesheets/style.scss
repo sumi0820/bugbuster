@@ -28,6 +28,17 @@ h3 {
   font-style: normal;
 }
 
+.center-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+
+
 /*========== Landing ===========*/
 
 .fp-tableCell {
@@ -185,6 +196,7 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  margin-top: 20px;
 }
 
 .sidebarRight__contents {
@@ -192,7 +204,6 @@ nav {
   justify-content: space-around;
   margin-top: 20px;
 }
-
 
 .sidebarRight {
   margin: 0;
@@ -264,7 +275,7 @@ nav {
   .main__nav {
     height: 10vh;
     width: 100%;
-    background-color:   white;
+    background-color: white;
     position: relative;
   }
 
@@ -287,7 +298,7 @@ nav {
 
   .main__nav__links {
     position: fixed;
-    background-color:  white;
+    background-color: white;
     height: 100vh;
     width: 100vw;
     top: 0;
@@ -305,7 +316,7 @@ nav {
 
 
 
-  .main__nav__links.open{
+  .main__nav__links.open {
     top: 0;
     left: 0;
     clip-path: circle(100px at 100% -20%);
@@ -380,12 +391,12 @@ nav {
 
 
 
-.form__container {
-  padding: 20px;
-  height: 800px;
-  width: 100%;
-  position: relative;
-}
+// .form__container {
+//   padding: 20px;
+//   height: 800px;
+//   width: 100%;
+//   position: relative;
+// }
 
 .form__containerChild {
   position: absolute;
@@ -397,6 +408,10 @@ nav {
   margin: auto;
   width: 500px;
   height: 650px;
+}
+
+.form__size {
+  width: 300px;
 }
 
 /*========== Dashboard ===========*/
@@ -477,7 +492,7 @@ nav {
 .project__contents__container {
   display: flex;
   justify-content: space-between;
-  margin: 20px;
+  margin: 20px 0;
 }
 
 
@@ -486,14 +501,25 @@ nav {
   margin: 0 5px;
 }
 
+.project__content__table{
+  margin-top: 2px !important;
+}
+
 .project__content__header {
   display: flex;
   justify-content: space-between;
+  padding-top: 5px;
+  margin-top: 5px;
 }
 
-.project__text_container{
+.project__text_container {
   margin: 30px;
   display: flex;
   justify-content: center;
-align-items: center;
+  align-items: center;
+}
+.project__card__footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
 }

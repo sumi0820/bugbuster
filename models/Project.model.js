@@ -11,12 +11,11 @@ const projectSchema = new mongoose.Schema(
       type: String,
       text: true,
     },
-    user: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "user",
-      },
-    ],
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+    },
+
     // task: [
     //   {
     //     type: mongoose.Schema.Types.ObjectId,
@@ -24,7 +23,10 @@ const projectSchema = new mongoose.Schema(
     //   },
     // ],
     github: { type: String, default: "https://github.com/" },
-
+    // feedback:{
+    //       type: mongoose.Schema.Types.ObjectId,
+    //       ref: "feedback",
+    //   },
     status: {
       type: String,
       default: "Open",

@@ -25,11 +25,12 @@
     <a href="/home">
       <img src="/images/logo.png" alt="logo" class="logo sidebar__main-logo">
     </a>
-    {{#unless loggedInUser.loginType}}
-    <a href="/allPosts" class="sidebar__text">
+
+    {{#if loggedInUser.loginType}}
+    <a href="/openProjects" class="sidebar__text">
       <h3>Open Project</h3>
     </a>
-    {{/unless}}
+    {{/if}}
 
     <a href="/allPosts" class="sidebar__text">
       <h3>All Posts</h3>

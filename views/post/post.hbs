@@ -20,17 +20,26 @@
       </div>
       <div class="description">
         <p>{{postInfo.post.description}}</p>
+        <a href="{{postInfo.post.image}}" target="_blank">
+          <img class="ui medium rounded image" src="{{postInfo.post.image}}">
+        </a>
       </div>
 
     </div>
     <div class="extra content">
       <div class="left floated post__buttons">
-        <a href="{{postInfo.post._id}}/edit" id="post__button">
+        <a href="/posts/{{postInfo.post._id}}/edit" id="post__button">
           <button class="ui yellow button">
             <i class="edit outline icon"></i>
             Edit
           </button>
         </a>
+        <form action="{{postInfo.post._id}}/delete" method="POST">
+          <button class="ui fluid  red button" type="submit">
+            <i class="trash alternate icon"></i>
+            Delete
+          </button>
+        </form>
       </div>
       <div class="right floated author">
         <img class="ui avatar image" src="{{postInfo.post.user.image}}"> {{postInfo.post.user.username}}
@@ -54,6 +63,9 @@
       </div>
       <div class="description">
         <p>{{likedChecked.post.description}}</p>
+        <a href="{{postInfo.post.image}}" target="_blank">
+          <img class="ui medium rounded image" src="{{likedChecked.post.image}}">
+        </a>
       </div>
     </div>
     <div class="extra content">

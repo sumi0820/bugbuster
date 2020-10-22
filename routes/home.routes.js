@@ -4,8 +4,6 @@ const PostModel = require("../models/Post.model");
 
 /* GET home page */
 router.get("/home", (req, res, next) => {
-  res.locals.loggedInUser = req.session.loggedInUser;
-
   PostModel.find()
     .populate("user")
     .then((allPosts) => {
@@ -22,7 +20,10 @@ router.get("/home", (req, res, next) => {
             return 0;
           }
         });
-      res.render("home", { posts });
+      res.locals.loggedInUser = req.session.loggedInUser;
+      const loggedInUser = req.session.loggedInUser;
+
+      res.render("home", { posts, loggedInUser });
     })
     .catch((err) => {
       console.log(err);

@@ -3,6 +3,9 @@ const { findByIdAndUpdate } = require("../models/Post.model");
 const router = express.Router();
 const PostModel = require("../models/Post.model");
 const ReviewModel = require("../models/Review.model");
+const upload = require("../config/cloudinary.config");
+require("../config/cloudinary.config");
+const { parser, storage } = require("../config/cloudinary.config");
 
 /* GET home page */
 router.get("/post/create", (req, res, next) => {
@@ -10,11 +13,13 @@ router.get("/post/create", (req, res, next) => {
   res.render("post/postCreate");
 });
 //====== Create New Post ========//
-router.post("/post/create", (req, res) => {
+router.post("/post/create", parser.single("image"), (req, res) => {
   let loggedInUser = req.session.loggedInUser;
+  console.log(req.file);
 
   PostModel.create({
     user: loggedInUser,
+    image: req.file.path,
     ...req.body,
   })
     .then((post) => {
@@ -23,7 +28,9 @@ router.post("/post/create", (req, res) => {
       res.redirect("/home");
     })
     .catch((err) => {
-      console.log(err);
+      res.status(500).render("post/postCreate", {
+        message: err.message,
+      });
     });
 });
 
@@ -36,10 +43,10 @@ router.get("/posts/:postId", (req, res, next) => {
     .populate("user")
     .populate("review")
     .populate({
-      path: 'review', // The string we passed in before
+      path: "review", 
       populate: {
-        path: 'user' // This will populate the friends' addresses
-      }
+        path: "user", 
+      },
     })
     .populate("like")
     .then((post) => {
@@ -168,6 +175,21 @@ router.post("/posts/:postId/edit", (req, res) => {
       res.locals.loggedInUser = req.session.loggedInUser;
       let userId = res.locals.loggedInUser._id;
       res.redirect(`/dashboard/${userId}`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+//====== Delete Post ========//
+
+router.post("/posts/:postId/delete", (req, res) => {
+  let postId = req.params.postId;
+  PostModel.findByIdAndDelete(postId)
+    .then(() => {
+      console.log("deleted");
+      res.locals.loggedInUser = req.session.loggedInUser;
+      res.redirect("/home");
     })
     .catch((err) => {
       console.log(err);

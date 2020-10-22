@@ -18,6 +18,14 @@ h3 {
   font-weight: 700;
   font-style: normal; }
 
+.center-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh; }
+
 /*========== Landing ===========*/
 .fp-tableCell {
   display: flex;
@@ -140,7 +148,8 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start; }
+  align-items: flex-start;
+  margin-top: 20px; }
 
 .sidebarRight__contents {
   display: flex;
@@ -283,12 +292,6 @@ nav {
 .post__comments {
   margin: 50px; }
 
-.form__container {
-  padding: 20px;
-  height: 800px;
-  width: 100%;
-  position: relative; }
-
 .form__containerChild {
   position: absolute;
   padding: 30px;
@@ -299,6 +302,9 @@ nav {
   margin: auto;
   width: 500px;
   height: 650px; }
+
+.form__size {
+  width: 300px; }
 
 /*========== Dashboard ===========*/
 .user__container__profile {
@@ -362,20 +368,30 @@ nav {
 .project__contents__container {
   display: flex;
   justify-content: space-between;
-  margin: 20px; }
+  margin: 20px 0; }
 
 .project__content {
   width: 100%;
   margin: 0 5px; }
 
+.project__content__table {
+  margin-top: 2px !important; }
+
 .project__content__header {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  padding-top: 5px;
+  margin-top: 5px; }
 
 .project__text_container {
   margin: 30px;
   display: flex;
   justify-content: center;
   align-items: center; }
+
+.project__card__footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100px; }
 
 /*# sourceMappingURL=style.css.map */

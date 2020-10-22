@@ -4,6 +4,7 @@ const router = express.Router();
 const PostModel = require("../models/Post.model");
 const ProjectModel = require("../models/Project.model");
 const TaskModel = require("../models/Task.model");
+const FeedbackModel = require("../models/Feedback.model");
 
 /* GET home page */
 router.get("/project/create", (req, res, next) => {
@@ -64,25 +65,96 @@ router.post("/project/create/:projectId/task", (req, res) => {
 //====== Display single project =========//
 router.get("/project/:projectId", (req, res, next) => {
   let projectId = req.params.projectId;
-  res.locals.isLoggedIn = req.session.loggedInUser;
+  const loggedInUser = req.session.loggedInUser;
 
   ProjectModel.findById(projectId)
     .populate("user")
+    .populate("project")
     .then((project) => {
       TaskModel.find({ project: projectId }).then((tasks) => {
-        console.log("Project: ", project, "Tasks: ", tasks);
-        res.locals.loggedInUser = req.session.loggedInUser;
-        res.render("project/project", { project, tasks });
+        FeedbackModel.find({ project: projectId })
+          .populate("user")
+          .then((feedbacks) => {
+            console.log("feedbacks: ", feedbacks);
+            res.locals.loggedInUser = req.session.loggedInUser;
+            res.render("project/project", {
+              project,
+              tasks,
+              feedbacks,
+              loggedInUser,
+            });
+          });
       });
       // }
     });
 });
 
+//====== Display open projects =========//
+router.get("/openProjects", (req, res, next) => {
+  res.locals.isLoggedIn = req.session.loggedInUser;
+
+  ProjectModel.find({ status: "Open" })
+    .populate("user")
+    .populate("feedback")
+    .populate({
+      path: "feedback",
+      populate: {
+        path: "user",
+      },
+    })
+    .then((projects) => {
+      res.render("project/openProjects", { projects });
+    });
+});
+
 //====== Edit Project ========//
+
+router.get("/project/:projectId/edit", (req, res) => {
+  let projectId = req.params.projectId;
+  ProjectModel.findById(projectId)
+    .then((project) => {
+      res.locals.loggedInUser = req.session.loggedInUser;
+      res.render("project/projectEdit", { project });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+router.post("/project/:projectId/edit", (req, res) => {
+  let projectId = req.params.projectId;
+  console.log(req.body);
+  ProjectModel.findByIdAndUpdate(projectId, req.body)
+    .populate("project")
+    .then((project) => {
+      console.log(project);
+      res.locals.loggedInUser = req.session.loggedInUser;
+      res.redirect(`/project/${project._id}`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+//====== Delete Project ========//
+
+router.post("/projects/:projectId/delete", (req, res) => {
+  let projectId = req.params.projectId;
+  ProjectModel.findByIdAndDelete(projectId)
+    .then((project) => {
+      console.log("deleted");
+      res.locals.loggedInUser = req.session.loggedInUser;
+      const loggedInUser = req.session.loggedInUser
+      res.redirect(`/dashboard/${loggedInUser._id}`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+//====== Edit Task ========//
 
 router.get("/project/:taskId/editTask", (req, res) => {
   let taskId = req.params.taskId;
-  console.log(taskId);
   TaskModel.findById(taskId)
     .then((task) => {
       res.locals.loggedInUser = req.session.loggedInUser;
@@ -96,18 +168,19 @@ router.get("/project/:taskId/editTask", (req, res) => {
 router.post("/project/:taskId/editTask", (req, res) => {
   let taskId = req.params.taskId;
   console.log(req.body);
-  TaskModel.findById(taskId)
+  TaskModel.findByIdAndUpdate(taskId, req.body)
     .populate("project")
     .then((task) => {
       console.log(task);
       res.locals.loggedInUser = req.session.loggedInUser;
-      // res.redirect(`/project/${task.project._id}`);
-      res.render("project/projectEditTask", task.project);
+      res.redirect(`/project/${task.project._id}`);
     })
     .catch((err) => {
       console.log(err);
     });
 });
+
+//====== Delete Task ========//
 
 router.post("/project/:taskId/deleteTask", (req, res) => {
   let taskId = req.params.taskId;
@@ -122,124 +195,46 @@ router.post("/project/:taskId/deleteTask", (req, res) => {
     });
 });
 
-// //====== Review ========//
-// router.get("/projects/:postId/review", (req, res) => {
-//   let postId = req.params.postId;
-//   res.locals.isLoggedIn = req.session.loggedInUser;
-//   res.render("post/postReview", { postId });
-// });
+// //====== Feedback ========//
+router.get("/projects/:projectId/feedback", (req, res) => {
+  let projectId = req.params.projectId;
+  res.locals.isLoggedIn = req.session.loggedInUser;
+  ProjectModel.findById(projectId)
+    .populate("user")
+    .then((project) => {
+      if (
+        req.session.loggedInUser.loginType ||
+        req.session.loggedInUser._id == project.user._id
+      ) {
+        res.render("project/projectFeedback", { projectId });
+      } else {
+        res
+          .status(500)
+          .render("project/project", { message: "User not exist!!!!" });
+      }
+    });
+});
 
-// router.post("/posts/:postId/review", (req, res) => {
-//   let postId = req.params.postId;
-//   res.locals.loggedInUser = req.session.loggedInUser;
+router.post("/projects/:projectId/feedback", (req, res) => {
+  let projectId = req.params.projectId;
+  res.locals.loggedInUser = req.session.loggedInUser;
+  console.log("This is in feedback", req.body);
 
-//   ReviewModel.create({
-//     user: res.locals.loggedInUser,
-//     ...req.body,
-//   }).then((review) => {
-//     // console.log(review);
-//     PostModel.findByIdAndUpdate(postId, { $push: { review: review } })
-//       // .populate('review')
-//       .then((post) => {
-//         // console.log("This is in mongoose: ", post);
-//         res.locals.loggedInUser = req.session.loggedInUser;
-//         res.redirect(`/posts/${postId}`);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   });
-// });
-
-// //====== Sorted Post ========//
-
-// // All posts
-// router.get("/allPosts", (req, res, next) => {
-//   res.locals.loggedInUser = req.session.loggedInUser;
-//   let userId = res.locals.loggedInUser._id;
-//   PostModel.find()
-//     .populate("user")
-//     .then((allPosts) => {
-//       let sortedByStatus = allPosts.sort((a, b) => {
-//         if (a.createdAt < b.createdAt) {
-//           return 1;
-//         } else if (a.createdAt > b.createdAt) {
-//           return -1;
-//         } else {
-//           return 0;
-//         }
-//       });
-//       res.render("post/sortedPosts", { sortedByStatus });
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
-
-// // Open items
-// router.get("/openIssues", (req, res, next) => {
-//   res.locals.loggedInUser = req.session.loggedInUser;
-//   let userId = res.locals.loggedInUser._id;
-//   PostModel.find()
-//     .populate("user")
-//     .then((posts) => {
-//       let sortedByStatus = posts
-//         .filter((post) => {
-//           return (
-//             post.status === "Pending Reply" ||
-//             post.status === "Open" ||
-//             post.status === "Reopen"
-//           );
-//         })
-//         .filter((post) => {
-//           console.log(userId);
-//           return post.user._id == userId;
-//         })
-//         .sort((a, b) => {
-//           if (a.createdAt < b.createdAt) {
-//             return 1;
-//           } else if (a.createdAt > b.createdAt) {
-//             return -1;
-//           } else {
-//             return 0;
-//           }
-//         });
-//       res.render("post/sortedPosts", { sortedByStatus });
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
-
-// // Closed items
-// router.get("/archive", (req, res, next) => {
-//   res.locals.loggedInUser = req.session.loggedInUser;
-//   let userId = res.locals.loggedInUser._id;
-//   PostModel.find()
-//     .populate("user")
-//     .then((posts) => {
-//       let sortedByStatus = posts
-//         .filter((post) => {
-//           return post.status === "Closed";
-//         })
-//         .filter((post) => {
-//           console.log(userId);
-//           return post.user._id == userId;
-//         })
-//         .sort((a, b) => {
-//           if (a.createdAt < b.createdAt) {
-//             return 1;
-//           } else if (a.createdAt > b.createdAt) {
-//             return -1;
-//           } else {
-//             return 0;
-//           }
-//         });
-//       res.render("post/sortedPosts", { sortedByStatus });
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
+  FeedbackModel.create({
+    user: req.session.loggedInUser,
+    project: projectId,
+    ...req.body,
+  }).then((feedback) => {
+    ProjectModel.findByIdAndUpdate(projectId, { feedback: feedback })
+      .then((project) => {
+        console.log("This is in mongoose: ", project);
+        res.locals.loggedInUser = req.session.loggedInUser;
+        res.redirect(`/project/${projectId}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+});
 
 module.exports = router;

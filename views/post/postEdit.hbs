@@ -5,66 +5,67 @@
 <div class="base__container">
   <div class="form__container">
     <div class="form__containerChild">
-      <form class="ui form " method="POST" action="/posts/{{post._id}}/edit">
-        <h2>Edit Your Post</h2>
+
+      <form class="ui form " method="POST" action="/posts/{{post._id}}/edit" enctype="multipart/form-data"></form>
+      <h2>Edit Your Post</h2>
+
+      <div class="field">
+        <label for="title">Issue Title</label>
+        <input name="title" type="text" class="form-control" id="title" value="{{post.title}}">
+      </div>
+
+      <div class="field">
+        <label for="description">Description</label>
+        <textarea name="description" type="text" class="form-control" id="description">{{post.description}}</textarea>
+      </div>
+
+      <div class="two fields">
 
         <div class="field">
-          <label for="title">Issue Title</label>
-          <input name="title" type="text" class="form-control" id="title" value="{{post.title}}">
-        </div>
-
-        <div class="field">
-          <label for="description">Description</label>
-          <textarea name="description" type="text" class="form-control" id="description">{{post.description}}</textarea>
-        </div>
-
-        <div class="two fields">
-
-          <div class="field">
-            <label>Issue On</label>
-            <select class="ui fluid dropdown" name="issueType">
-              <option value="{{post.issueType}}">{{post.issueType}}</option>
-              <option value="Class Activity">Class Activity</option>
-              <option value="LAB">LAB</option>
-              <option value="Project">Project</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label>Category</label>
-            <select class="ui fluid dropdown" name="category">
-              <option value="{{post.category}}">{{post.category}}</option>
-              <option value="HTML">HTML</option>
-              <option value="CSS">CSS</option>
-              <option value="JavaScript">JavaScript</option>
-              <option value="Node.js">Node.js</option>
-              <option value="Express.js">Express.js</option>
-              <option value="MongoDB">MongoDB</option>
-              <option value="React">React</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="field">
-          <label>Status</label>
-          <select class="ui fluid dropdown" name="status">
-            <option value="{{post.status}}">{{post.status}}</option>
-            <option value="Pending Reply">Pending Reply</option>
-            <option value="Closed">Closed</option>
-            <option value="Reopen">Reopen</option>
+          <label>Issue On</label>
+          <select class="ui fluid dropdown" name="issueType">
+            <option value="{{post.issueType}}">{{post.issueType}}</option>
+            <option value="Class Activity">Class Activity</option>
+            <option value="LAB">LAB</option>
+            <option value="Project">Project</option>
+            <option value="Other">Other</option>
           </select>
         </div>
 
         <div class="field">
-          <label for="image">Upload image</label>
-          <input name="image" type="text" class="form-control" id="image">
+          <label>Category</label>
+          <select class="ui fluid dropdown" name="category">
+            <option value="{{post.category}}">{{post.category}}</option>
+            <option value="HTML">HTML</option>
+            <option value="CSS">CSS</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Node.js">Node.js</option>
+            <option value="Express.js">Express.js</option>
+            <option value="MongoDB">MongoDB</option>
+            <option value="React">React</option>
+          </select>
         </div>
+      </div>
 
-        <button type="submit" class="ui fluid large inverted black basic button">
-          <i class="edit outline icon"></i>
-          Edit
-        </button>
+      <div class="field">
+        <label>Status</label>
+        <select class="ui fluid dropdown" name="status">
+          <option value="{{post.status}}">{{post.status}}</option>
+          <option value="Pending Reply">Pending Reply</option>
+          <option value="Closed">Closed</option>
+          <option value="Reopen">Reopen</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="image">Upload image</label>
+        <input name="image" type="file" class="form-control" id="image">
+      </div>
+
+      <button type="submit" class="ui fluid large inverted black basic button">
+        <i class="edit outline icon"></i>
+        Edit
+      </button>
       </form>
 
     </div>

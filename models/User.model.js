@@ -21,8 +21,8 @@ const userSchema = new Schema(
     },
     bio: String,
     loginType: {
-      type: String,
-      default: "student",
+      type: Boolean,
+      default: false,
     },
   },
   {

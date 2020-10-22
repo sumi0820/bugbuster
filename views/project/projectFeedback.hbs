@@ -1,0 +1,26 @@
+{{> sidebarLeft}}
+
+{{> sidebarRight}}
+
+
+<div class="base__container">
+
+  <div class="project__header">
+    <form class="ui form " method="POST" action="/projects/{{projectId}}/feedback">
+      <div class="ui card">
+        <div class="content">
+          <div class="header">
+            Feedback Form
+          </div>
+          <div class="field">
+            <textarea type="text" name='comment' class="form-control"
+              placeholder="Please add your feedback to the project."></textarea>
+          </div>
+          <button type="submit" class="ui fluid yellow right floated">
+            <i class="save large outline icon"></i>
+          </button>
+        </div>
+    </form>
+  </div>
+
+</div>

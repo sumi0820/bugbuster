@@ -28,6 +28,12 @@
     </div>
     <div class="extra content">
       <div class="left floated post__buttons">
+        <a href="/posts/{{postInfo.post._id}}/review" id='post__review'>
+          <div class="ui grey button" id='post__review'>
+            <i class="comment outline icon"></i>
+            Review
+          </div>
+        </a>
         <a href="/posts/{{postInfo.post._id}}/edit" id="post__button">
           <button class="ui yellow button">
             <i class="edit outline icon"></i>
@@ -115,8 +121,8 @@
   </div>
 </div>
 
-{{#if likedChecked.post.review}}
-<div class="ui divider"></div>
+{{/if}}
+{{#if postInfo.post.review}}
 <div class="ui text container post__main">
   <h2>Review</h2>
 </div>
@@ -128,26 +134,25 @@
   </h3>
 </div>
 {{/if}}
-{{/if}}
+{{#each postInfo.post.review}}
+<div class="ui divider"></div>
 
-  {{#each likedChecked.post.review}}
-
-  <div class="ui raised link card">
-    <div class="content">
-      <div class="meta">
-        <span class="category">
-          <img class="ui avatar image" src="{{this.user.image}}">
-          {{this.user.username}}
-        </span>
-        <div class="right floated">
-          <span class="date"> Created on {{dateFormat this.createdAt "MMMM Do YYYY"}} </span>
-        </div>
-      </div>
-      <div class="description">
-        <p>{{this.comment}}</p>
+<div class="ui raised link card">
+  <div class="content">
+    <div class="meta">
+      <span class="category">
+        <img class="ui avatar image" src="{{this.user.image}}">
+        {{this.user.username}}
+      </span>
+      <div class="right floated">
+        <span class="date"> Created on {{dateFormat this.createdAt "MMMM Do YYYY"}} </span>
       </div>
     </div>
-
+    <div class="description">
+      <p>{{this.comment}}</p>
+    </div>
   </div>
 
-  {{/each}}
+</div>
+
+{{/each}}

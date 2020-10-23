@@ -32,11 +32,13 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
+  align-content: center;
   min-height: 100vh;
 }
 
+.error{
+  text-align:center
+}
 
 
 /*========== Landing ===========*/
@@ -111,6 +113,7 @@ nav {
 
 .landing__button {
   margin: 0 20px;
+
 }
 
 .intro {
@@ -126,7 +129,7 @@ nav {
 }
 
 .slider {
-  background: rgb(97, 105, 109);
+  background: #14274e;
   position: fixed;
   top: 0;
   left: 0;
@@ -151,7 +154,44 @@ nav {
   display: inline-block;
 }
 
+
+
+.main__nav__links__landing {
+  position: fixed;
+  background-color: Transparent;
+  height: 100vh;
+  width: 50%;
+  list-style: none;
+  display: none;
+  justify-content: center;
+  z-index: 0;
+}
+
+.landing__buttons__top {
+  display: none;
+}
+
 @media screen and (max-width: 1440px) {
+
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  .landing__nav {
+    display: none;
+  }
+
+  .landing__buttons__top {
+    display: block;
+    margin-top: 20px;
+    color: black;
+
+  }
+
+  h4:hover {
+    color: black;
+  }
 
   .landing__copy {
     font-size: 55px;
@@ -162,6 +202,42 @@ nav {
     object-fit: contain;
     width: 500px;
     margin: 0 50px;
+  }
+
+}
+
+
+@media screen and (max-width: 600px) {
+
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  .landing__nav {
+    display: none;
+  }
+
+  .landing__buttons__top {
+    display: block;
+    margin-top: 20px;
+    color: black;
+
+  }
+
+  h4:hover {
+    color: black;
+  }
+
+  .landing__copy__main {
+    font-size: 50px;
+  }
+
+  .s2,
+  .s3,
+  .s4,
+  .s5 {
+    display: none !important;
   }
 
 }
@@ -184,7 +260,7 @@ nav {
   width: 300px;
   top: 0;
   left: 0;
-  background-color: white;
+  background-color: #14274e;
   position: fixed;
   height: 100vh;
   overflow: auto;
@@ -197,6 +273,7 @@ nav {
   justify-content: center;
   align-items: flex-start;
   margin-top: 20px;
+
 }
 
 .sidebarRight__contents {
@@ -208,11 +285,10 @@ nav {
 .sidebarRight {
   margin: 0;
   padding-top: 10px;
-  width: 350px;
+  width: 300px;
   right: 0;
   top: 0;
-  // background-color: #f6f6f6;
-  background-color: white;
+  background-color: #14274e;
   position: fixed;
   height: 100vh;
   overflow: auto;
@@ -222,11 +298,12 @@ nav {
 .sidebarLeft a,
 .sidebarRight a {
   display: block;
-  color: black;
+  color: #f6f6f6;
   padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
 }
 
 /* Links on mouse-over */
@@ -259,13 +336,29 @@ nav {
 
 
 
+.search__btn {
+  height: 40px;
+  width: 40px;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.search__btn>a {
+  padding: 5px;
+}
+
+
 /* On screens that are less than 700px wide, make the sidebar into a topbar */
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1400px) {
 
   body {
     padding: 0;
     margin: 0;
   }
+
 
   .sidebarLeft,
   .sidebarRight {
@@ -275,7 +368,7 @@ nav {
   .main__nav {
     height: 10vh;
     width: 100%;
-    background-color: white;
+    background-color: #14274e;
     position: relative;
   }
 
@@ -291,14 +384,14 @@ nav {
   .line {
     width: 30px;
     height: 3px;
-    background-color: black;
+    background-color: white;
     margin: 5px;
     z-index: 2;
   }
 
   .main__nav__links {
     position: fixed;
-    background-color: white;
+    background-color: #14274e;
     height: 100vh;
     width: 100vw;
     top: 0;
@@ -314,6 +407,11 @@ nav {
 
   }
 
+  .sidebar__text {
+    color: #f6f6f6;
+    margin-top: 10px;
+  }
+
 
 
   .main__nav__links.open {
@@ -324,6 +422,10 @@ nav {
     transition: all 1s ease-out;
     pointer-events: all;
 
+  }
+
+  .search__main__nav{
+    margin-top: 30px;
   }
 }
 
@@ -358,6 +460,13 @@ nav {
   align-items: center;
   padding: 80px 0;
 
+}
+
+.post__main{
+  margin-top: 50px;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center !important;
 }
 
 .ui.card {
@@ -416,28 +525,27 @@ nav {
 
 /*========== Dashboard ===========*/
 
-.user__container__profile {
-  display: flex;
+.dashboard__profile {
+  margin-bottom: 30px;
 }
 
-.user__container__description {
-  display: flex;
-  flex-direction: column;
-  padding: 50px;
-  width: 500px;
+.dashboard__profile__image {
+  margin-top: 20px;
 }
 
 .user__container__header {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 15px;
+}
+
+.dashboard__extra__items {
+  margin: 10px 0;
 }
 
 .dashboard__button {
-  display: flex;
-  justify-content: flex-end;
-  margin: 20px 20px;
-
+  margin: 0 20px;
 }
 
 .user__container__posts {
@@ -446,7 +554,9 @@ nav {
   justify-content: space-between;
 }
 
-
+.dashboard__card{
+  margin-bottom: 10px !important;
+}
 
 #user__post {
   width: 300px;
@@ -475,33 +585,19 @@ nav {
 
 /*========== Project ===========*/
 
-.project__header {
-  display: flex;
-  justify-content: center;
-  width: 700px;
+.project__main {
+  margin-top: 30px;
 }
 
-.project__contents {
-  margin-top: 50px;
-  width: 700px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+.project__edit__buttons {
+  text-align: end;
 }
 
-.project__contents__container {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
+.project__tasks {
+  margin-top: 20px;
 }
 
-
-.project__content {
-  width: 100%;
-  margin: 0 5px;
-}
-
-.project__content__table{
+.project__content__table {
   margin-top: 2px !important;
 }
 
@@ -518,8 +614,23 @@ nav {
   justify-content: center;
   align-items: center;
 }
+
 .project__card__footer {
   display: flex;
   justify-content: space-between;
   width: 100px;
+}
+
+.project__edit__button {
+  margin-top: 5px !important;
+}
+
+/*========== Archive ===========*/
+
+.archive__card__post {
+  background-color: #14274e !important;
+}
+
+.archive__card__post__text {
+  color: white !important;
 }

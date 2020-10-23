@@ -1,37 +1,39 @@
-<div class="form__container">
-  <div class="form__containerChild">
-    <h2>Sign Up</h2>
-    <form class="ui form" method="POST" action="/signup">
-      <div class="field">
-        <label>Username</label>
-        <input type="text" name="username" placeholder="Username">
-      </div>
-      <div class="field">
-        <label>Email</label>
-        <input type="email" name="email" placeholder="Email">
-      </div>
-      <div class="field">
-        <label>Password</label>
-        <input type="password" name="password" placeholder="Password">
-      </div>
-      <div class="field">
-        <div class="ui checkbox">
-          <input type="checkbox" name="loginType" value="true">
-          <label>Are you LT/TA?</label>
+<div class="center-screen">
+  <div class="ui concenter aligned grid">
+    <div class="ui items ">
+      <h2>Sign Up</h2>
+      <form class="ui form" method="POST" action="/signup">
+        <div class="field">
+          <label>Username</label>
+          <input type="text" name="username" placeholder="Username">
         </div>
-      </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="Email">
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" name="password" placeholder="Password">
+        </div>
+        <div class="field">
+          <div class="ui checkbox">
+            <input type="checkbox" name="loginType" value="true">
+            <label>Are you LT/TA?</label>
+          </div>
+        </div>
 
-      <button class="ui button" type="submit">Sign Up</button>
-      {{#if message}}
-      <div class="ui negative message">
-        <div class="header">
-          Signup failed.
+        <button class="ui teal button" type="submit">Sign Up</button>
+        {{#if message}}
+        <div class="ui negative message">
+          <div class="header">
+            Signup failed.
+          </div>
+          <ul class="list">
+            <li>{{message}}</li>
+          </ul>
         </div>
-        <ul class="list">
-          <li>{{message}}</li>
-        </ul>
-      </div>
-      {{/if }}
-    </form>
+        {{/if }}
+      </form>
+    </div>
   </div>
 </div>

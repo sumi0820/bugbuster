@@ -2,43 +2,51 @@
 
 {{> sidebarRight}}
 
-<div class="base__container">
-  <div class="user__container__profile">
-    <img class="ui medium circular image" src="{{profile.user.image}}">
-    <div class="user__container__description">
-      <h2>{{profile.user.username}}</h2>
-      <div class="content">
-        <div class="description">
-          {{profile.user.bio}}
+<div class="dashboard__profile">
+  <div class="ui text container">
+
+    <div class="ui two column stackable centered grid">
+
+
+      <div class="ui text container dashboard__profile__image">
+        <img class="ui medium circular image centered" src="{{profile.user.image}}">
+      </div>
+
+      <div class="ui container">
+        <h2>{{profile.user.username}}</h2>
+        <div class="content">
+          <div class="description">
+            <div class="ui text container">
+              {{profile.user.bio}}
+            </div>
+          </div>
+          <div class="ui text container extra content dashboard__extra__items">
+            <span>
+              Joined in {{dateFormat profile.user.createdAt "MMMM Do YYYY"}}
+            </span>
+            <a class="item dashboard__button" href="/dashboard/{{profile.user._id}}/edit">
+              <i class="edit outline icon"></i>
+            </a>
+          </div>
         </div>
       </div>
-      <div class="extra content">
-        <span class="floated">
-          Joined in {{dateFormat profile.user.createdAt "MMMM Do YYYY"}}
-        </span>
-      </div>
-      <div class="dashboard__button">
-        <a class="item" href="/dashboard/{{profile.user._id}}/edit">
-          <h3>Edit Profile</h3>
-        </a>
-      </div>
-    </div>
 
+    </div>
   </div>
 </div>
 
-<div class="ui two column stackable centered grid">
 
+<div class="ui two column stackable centered grid">
   <div class="four column centered row">
     <div class="column">
       <div class="user__container__header">
         <h2>Your Project</h2>
-        <a class="item" href="/project/create">
+        <a class="item" href="/projects/create">
           <i class="plus large circle icon"></i>
         </a>
       </div>
-      <div class="ui centered cards">
-        {{#each profile.yourProjects}}
+      {{#each profile.yourProjects}}
+      <div class="ui centered cards dashboard__card">
         <div class="ui cards">
           <div class="card" id="user__post">
             <a class="content" href="/project/{{this._id}}">
@@ -58,8 +66,8 @@
             </a>
           </div>
         </div>
-        {{/each}}
       </div>
+      {{/each}}
     </div>
 
     <div class="column">
@@ -68,27 +76,30 @@
         <a class="item" href="/post/create">
           <i class="plus large circle icon"></i>
         </a>
-
       </div>
       {{#each profile.yourPosts}}
-      <div class="ui centered cards">
-        <div class="card" id="user__post">
-          <a class="content" href="/posts/{{this._id}}">
-            <div class="header">{{this.title}}</div>
-            <div class="description">
-              {{this.description}}
-            </div>
-            <div class="status">
-              {{this.status}}
-            </div>
-          </a>
-          <a href="/posts/{{this._id}}">
-            <div class="ui bottom attached button">
-              <i class="add icon"></i>
-              <a href="/posts/{{this._id}}">Detail</a>
-            </div>
-          </a>
+      <div class="ui centered cards ">
+        <div class="ui cards">
+
+          <div class="card " id="user__post">
+            <a class="content " href="/posts/{{this._id}}">
+              <div class="header ">{{this.title}}</div>
+              <div class="description ">
+                {{this.description}}
+              </div>
+              <div class="status ">
+                {{this.status}}
+              </div>
+            </a>
+            <a href="/posts/{{this._id}}">
+              <div class="ui bottom attached button">
+                <i class="add icon"></i>
+                <a href="/posts/{{this._id}}">Detail</a>
+              </div>
+            </a>
+          </div>
         </div>
+
       </div>
       {{/each}}
     </div>

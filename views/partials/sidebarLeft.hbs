@@ -11,11 +11,58 @@
       </a>
     </li>
     <li>
+      <a href="/dashboard/{{loggedInUser._id}}" class="sidebar__text">
+        <h3>Dashboard</h3>
+      </a>
+    </li>
+    <li>
+      <a href="/openProjects" class="sidebar__text">
+        <h3>Open Project</h3>
+      </a>
+
+    </li>
+    <li>
       <a href="/allPosts" class="sidebar__text">
         <h3>All Posts</h3>
       </a>
     </li>
 
+
+    <li>
+      <a href="/openIssues" class="sidebar__text">
+        <h3>Open Issues</h3>
+      </a>
+    </li>
+    <li>
+      <a href="/archive" class="sidebar__text">
+        <h3>Archive</h3>
+      </a>
+    </li>
+    <li>
+
+    </li>
+
+    <li>
+      <a href="/logout" class="sidebar__text">
+        <h3>Log Out</h3>
+      </a>
+    </li>
+    <li>
+      <form class="ui form search search__main__nav" action="/search" method="GET">
+        <div class="fields">
+          <div class="field">
+            <input type="text" name="search" placeholder="Search">
+          </div>
+          <div class="field ">
+            <button class="search__btn" type="submit">
+              <a href="#about" class="sidebar__search">
+                <i class="search icon"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+      </form>
+    </li>
   </ul>
 </nav>
 
@@ -26,11 +73,10 @@
       <img src="/images/logo.png" alt="logo" class="logo sidebar__main-logo">
     </a>
 
-    {{#if loggedInUser.loginType}}
     <a href="/openProjects" class="sidebar__text">
       <h3>Open Project</h3>
     </a>
-    {{/if}}
+
 
     <a href="/allPosts" class="sidebar__text">
       <h3>All Posts</h3>
@@ -41,16 +87,21 @@
     <a href="/archive" class="sidebar__text">
       <h3>Archive</h3>
     </a>
-    <a href="#about" class="sidebar__text">
-      <h3>Latest</h3>
-    </a>
-    
-    <a href="#about" class="sidebar__search"><i class="search icon"></i></a>
+
+    <form class="ui form search" action="/search" method="GET">
+      <div class="fields">
+        <div class="field">
+          <input type="text" name="search" placeholder="Search">
+        </div>
+        <div class="field ">
+          <button class="search__btn" type="submit">
+            <a href="#about" class="sidebar__search">
+              <i class="search icon"></i>
+            </a>
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
-  {{!-- <div class="sidebar__contents">
-    <a href="https://my.ironhack.com/" target="_blank"><img src="/images/ironhack_logo.png" alt="ironhack_logo"
-        class="logo"></a>
-    <a href="https://stackoverflow.com/" target="_blank"><img src="/images/stackoverflow_logo.png"
-        alt="stackoverflow_logo" class="logo"></a>
-  </div> --}}
+
 </div>

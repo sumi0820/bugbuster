@@ -48,7 +48,6 @@ router.get("/dashboard/:userId", (req, res, next) => {
                 }
               });
             let profile = { user, yourPosts, yourProjects };
-            console.log(projects);
             res.render("user/dashboard", { profile });
           });
       });
@@ -65,18 +64,14 @@ router.get("/dashboard/:userId/edit", (req, res) => {
 
 router.post("/dashboard/:userId/edit", parser.single("image"), (req, res) => {
   let userId = req.params.userId;
-  console.log(req.file);
-  
+  res.locals.loggedInUser = req.session.loggedInUser;
+  const user = req.session.loggedInUser;
   UserModel.findByIdAndUpdate(userId, {
-    image: req.file.path,
+    image: req.file ? req.file.path : user.image,
     ...req.body,
   })
     .then((data) => {
-      // console.log(data);
-
-      res.locals.loggedInUser = req.session.loggedInUser;
-      let userId = res.locals.loggedInUser._id;
-      res.redirect(`/dashboard/${userId}`);
+      res.redirect(`/dashboard/${user._id}`);
     })
     .catch((err) => {
       console.log(err);

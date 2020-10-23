@@ -18,22 +18,25 @@ tl.fromTo(
   { opacity: 1, duration: 2 },
   "-=1"
 );
+tl.fromTo(
+  ".landing__buttons__top",
+  { opacity: 0 },
+  { opacity: 1, duration: 2 },
+  "-=1"
+);
 
 new fullpage("#fullpage", {
   //options here
   autoScrolling: true,
-  navigation: true,
   verticalCentered: true,
 });
 
+
+
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".main__nav__links");
-const links = document.querySelector(".main__nav__links li");
 
 hamburger.addEventListener("click", () => {
   console.log("clicked");
   navLinks.classList.toggle("open");
-
 });
-
-

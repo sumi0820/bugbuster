@@ -4,28 +4,62 @@
 
 
 <div class="posts__container">
+  {{#if sortedByStatus}}
   {{#each sortedByStatus}}
-  <a class="ui card" href="/posts/{{this._id}}">
+  <a class="ui card " href="/posts/{{this._id}}">
     <div class="content">
       <div class="header">
-        <h2>
+        <h2 class="">
           {{this.title}}
         </h2>
       </div>
       <div class="meta">
-        <span class="category">{{this.issueType}} : </span>
-        <span class="category">{{this.category}}</span>
+        <span class="category ">{{this.issueType}} : </span>
+        <span class="category ">{{this.category}}</span>
         <div class="right floated">
-          <span class="date"> Posted on {{dateFormat postInfo.post.createdAt "MMMM Do YYYY"}} </span>
+          <span class="date "> Posted on {{dateFormat postInfo.post.createdAt "MMMM Do YYYY"}} </span>
         </div>
       </div>
       <div class="description">
+        <p class="">{{this.description}}</p>
+      </div>
+    </div>
+    <div class="extra content">
+      <div class="left floated author">
+        <div class="status ">
+          {{this.status}}
+        </div>
+      </div>
+      <div class="right floated author">
+        <img class="ui avatar image" src="{{this.user.image}}"> <span class="">{{this.user.username}}</span> 
+      </div>
+    </div>
+  </a>
+  {{/each}}
+
+
+  {{#each projectSortedByStatus}}
+  <a class="ui card archive__card__post" href="/project/{{this._id}}">
+    <div class="content">
+      <div class="header">
+        <h2 class="archive__card__post__text">
+          {{this.title}}
+        </h2>
+      </div>
+      <div class="meta">
+        <span class="category archive__card__post__text">Feedback: {{this.feedback.length}}</span>
+
+        <div class="right floated">
+          <span class="date archive__card__post__text"> Created on {{dateFormat postInfo.post.createdAt "MMMM Do YYYY"}} </span>
+        </div>
+      </div>
+      <div class="description archive__card__post__text">
         <p>{{this.description}}</p>
       </div>
     </div>
     <div class="extra content">
       <div class="left floated author">
-        <div class="status">
+        <div class="status archive__card__post__text">
           {{this.status}}
         </div>
       </div>
@@ -35,4 +69,14 @@
     </div>
   </a>
   {{/each}}
+
+
+
+  {{else}}
+  <div class="post__comments">
+    <h3>
+      There's no post...
+    </h3>
+  </div>
+  {{/if}}
 </div>

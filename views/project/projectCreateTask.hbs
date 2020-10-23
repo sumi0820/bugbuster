@@ -2,29 +2,26 @@
 
 {{> sidebarRight}}
 
-<div class="base__container">
-  <div class="form__container">
-    <div class="form__containerChild">
-      <form class="ui form " method="POST" action="/project/create/{{project._id}}/task">
-        <h2>Create New Task</h2>
+<div class="center-screen">
 
-        {{!-- <label>Item</label> --}}
-        <div class="two fields">
+  <div class="ui container aligned grind">
+    <div class="ui concenter aligned grid">
+      <div class="ui items form__size">
+
+        <form class="ui form " method="POST" action="/project/create/{{project._id}}/task">
+          <h2>Create New Task</h2>
+
+          {{!-- <label>Item</label> --}}
           <div class="field">
             <input name="item" type="text" class="form-control" id="task" placeholder="Item">
           </div>
           <button type="submit" class="ui fluid large teal  button">
-            Add<i class="angle double right icon"></i>
+            <i class="save icon"></i>
+            Add
           </button>
-          {{!--           
-          <div class="field">
-            <input name="task" type="text" class="form-control" id="task" placeholder="">
-          </div> --}}
-        </div>
+        </form>
 
-
-      </form>
-
+      </div>
     </div>
   </div>
 </div>

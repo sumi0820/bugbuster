@@ -2,47 +2,36 @@
 
 {{> sidebarRight}}
 
+<div class="center-screen">
+  <div class="ui text container">
+    <form class="ui form fluid" method="POST" action="/project/{{project._id}}/edit">
+      <h2>Edit Your Project</h2>
 
-<div class="base__container">
+      <div class="field">
+        <input type="text" value="{{project.title}}" name='title' class="form-control" required>
+      </div>
 
-  <div class="project__header">
-    <form class="ui form " method="POST" action="/project/{{project._id}}/edit">
-      <div class="ui card">
-        <div class="content">
+      <div class="field">
+        <textarea type="text" name='description' class="form-control" required>{{project.description}}</textarea>
+      </div>
 
-          <div class="field">
-            <input type="text" value="{{project.title}}" name='title' class="form-control">
-          </div>
-
-
-          <div class="field">
-            <textarea type="text" name='description' class="form-control">{{project.description}}</textarea>
-          </div>
-
-          <div class="three fields">
-            <div class="field">
-              <select class="ui fluid dropdown" name="status">
-                <option value="{{project.status}}">{{project.status}}</option>
-                <option value="Closed">Closed</option>
-                <option value="Closed">Reopen</option>
-              </select>
-            </div>
-          </div>
-          <div class="four fields">
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field"></div>
-            <div class="field">
-              <button type="submit" class="ui  large teal button ">
-                <i class="save outline icon"></i>
-                Save
-              </button>
-            </div>
-          </div>
+      <div class="two fields">
+        <div class="field">
+          <select class="ui fluid dropdown" name="status" required>
+            <option value="{{project.status}}">{{project.status}}</option>
+            <option value="Closed">Closed</option>
+            <option value="Closed">Reopen</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="ui large teal button fluid centered  project__edit__button">
+        <i class="save outline icon"></i>
+        Save
+      </button>
     </form>
 
-    <form class="ui form " method="POST" action="/projects/{{project._id}}/delete">
-      <button type="submit" class="ui  large red button">
+    <form class="ui form " method="POST" action="/project/{{project._id}}/delete">
+      <button type="submit" class="ui  large red button fluid centered  project__edit__button">
         <i class="trash alternate icon"></i>
         Delete
       </button>

@@ -2,16 +2,16 @@
 
 {{> sidebarRight}}
 
-<div class="base__container">
-  <div class="form__container">
-    <div class="form__containerChild">
+<div class="center-screen">
+  <div class="ui concenter aligned grid">
+    <div class="ui items ">
 
-      <form class="ui form " method="POST" action="/posts/{{post._id}}/edit" enctype="multipart/form-data"></form>
+      <form class="ui form " method="POST" action="/posts/{{post._id}}/edit" enctype="multipart/form-data">
       <h2>Edit Your Post</h2>
 
       <div class="field">
         <label for="title">Issue Title</label>
-        <input name="title" type="text" class="form-control" id="title" value="{{post.title}}">
+        <input name="title" type="text" class="form-control" id="title" value="{{post.title}}" >
       </div>
 
       <div class="field">
@@ -20,7 +20,6 @@
       </div>
 
       <div class="two fields">
-
         <div class="field">
           <label>Issue On</label>
           <select class="ui fluid dropdown" name="issueType">
@@ -62,12 +61,13 @@
         <input name="image" type="file" class="form-control" id="image">
       </div>
 
-      <button type="submit" class="ui fluid large inverted black basic button">
-        <i class="edit outline icon"></i>
-        Edit
+      <button type="submit" class="ui large teal button fluid centered">
+        <i class="save outline icon"></i>
+        Save
       </button>
       </form>
 
     </div>
   </div>
 </div>
+

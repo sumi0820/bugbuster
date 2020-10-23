@@ -5,96 +5,102 @@
 
 {{!-- <div class="base__container"> --}}
 
-<div class="ui container aligned grind">
-  <div class="ui concenter aligned grid">
-    <div class="ui card">
-      <div class="content">
-        <div class="header">
-          <h2>{{project.title}}</h2>
-        </div>
-        <div class="meta">
-          <p>{{project.user.username}}</p>
-          <div class="right floated">
-            <p>{{dateFormat project.createdAt "MMMM Do YYYY"}}</p>
-            <p>{{project.status}}</p>
-            <a href="{{project.github}}">Github</a>
-            <a href="/project/{{project._id}}/edit" id="post__button">
-              <div class="project__edit__buttons">
-                <a href="/project/{{project._id}}/edit" id="post__button">
-                  <button class="ui yellow button ">
-                    <i class="edit outline icon"></i>
-                  </button>
-                </a>
-              </div>
+<div class="project__main">
+
+
+  <div class="ui container aligned grind">
+    <div class="ui concenter aligned grid">
+      <div class="ui card">
+        <div class="content">
+          <div class="header">
+            <h2>{{project.title}}</h2>
           </div>
+          <div class="meta">
+            <p>{{project.user.username}}</p>
+            <div class="right floated">
+              <p>{{dateFormat project.createdAt "MMMM Do YYYY"}}</p>
+              <p>{{project.status}}</p>
+              <a href="{{project.github}}">Github</a>
+              {{#if owner}}
+              <a href="/project/{{project._id}}/edit" id="post__button">
+                <div class="project__edit__buttons">
+                  <a href="/project/{{project._id}}/edit" id="post__button">
+                    <i class="edit outline icon"></i>
+                  </a>
+                </div>
+              </a>
+              {{/if}}
+            </div>
+          </div>
+          <p>{{project.description}}</p>
         </div>
-        <p>{{project.description}}</p>
       </div>
     </div>
-  </div>
 
-  <div class="ui centered grid">
-    <div class="two column centered row">
+    <div class="ui centered grid">
+      <div class="two column centered row">
 
-      <div class="column">
-        <div class="ui cards">
-          <div class="card">
-            <div class="content">
-              <div class="header">
-                Feedback
-                {{#if loggedInUser.loginType}}
-                <a class="item right floated" href="/projects/{{project._id}}/feedback">
-                  <i class="plus  circle icon"></i>
-                </a>
-                {{/if}}
-              </div>
+        <div class="column">
+          <div class="ui cards">
+            <div class="card">
+              <div class="content">
+                <div class="header">
+                  Feedback
+                  {{#if loggedInUser.loginType}}
+                  <a class="item right floated" href="/project/{{project._id}}/feedback">
+                    <i class="plus  circle icon"></i>
+                  </a>
+                  {{/if}}
+                </div>
 
-              <div class="description">
-                <div class="ui large list">
-                  {{!-- Loop owner --}}
+                <div class="description">
+                  <div class="ui large list">
+                    {{!-- Loop owner --}}
 
-                  {{#if feedbacks.length}}
-                  {{#each feedbacks}}
+                    {{#if feedbacks.length}}
+                    {{#each feedbacks}}
+                    <div class="item">
+                      <div class="author">
+                        <img class="ui avatar image" src="{{this.user.image}}"> {{this.user.username}}
+                      </div>
+                      <div class="content">
+                        <div class="description">{{this.comment}}</div>
+                      </div>
+                    </div>
+                    <div class="ui divider"></div>
+
+                    {{/each}}
+                    {{else}}
+                  </div>
                   <div class="item">
-                    <div class="author">
-                      <img class="ui avatar image" src="{{this.user.image}}"> {{this.user.username}}
-                    </div>
                     <div class="content">
-                      <div class="description">{{this.comment}}</div>
+                      <div class="description">No feedback submitted yet.</div>
                     </div>
                   </div>
-                  <div class="ui divider"></div>
-
-                  {{/each}}
-                  {{else}}
+                  {{/if}}
                 </div>
-                <div class="item">
-                  <div class="content">
-                    <div class="description">No feedback submitted yet.</div>
-                  </div>
-                </div>
-                {{/if}}
+                {{!-- Loop End --}}
               </div>
-              {{!-- Loop End --}}
             </div>
           </div>
         </div>
       </div>
     </div>
+    
   </div>
-</div>
-
-</div>
 
 
-<div class="ui concenter centered grid">
+
   <div class="ui text container">
+
     <table class="ui table project__content__table">
       <div class="project__content__header">
         <h3>Task</h3>
-        <a href="/create/{{project._id}}/task" id="post__button">
-          <i class="edit outline icon"></i><span>Add New Task</span>
+        {{#if owner}}
+        <a href="/project/create/{{project._id}}/task" id="post__button">
+          <i class="edit outline icon"></i><span>Add New</span>
         </a>
+        {{/if}}
       </div>
       <thead>
         <tr>
@@ -107,26 +113,34 @@
         </tr>
       </thead>
       <tbody>
+
+        {{#if owner}}
         {{#each tasks}}
         <tr>
           <td>{{this.item}}</td>
           <td>{{this.status}}</td>
           <td>
             <a href="/project/{{this._id}}/editTask" id="post__button">
-              <button class="ui yellow button">
+              <button class="ui yellow button ">
                 <i class="edit outline icon"></i>
               </button>
             </a>
           </td>
-
         </tr>
         {{/each}}
+        {{else}}
+        {{#each tasks}}
+        <tr>
+          <td>{{this.item}}</td>
+          <td>{{this.status}}</td>
+        </tr>
+        {{/each}}
+        {{/if}}
+
       </tbody>
     </table>
 
   </div>
-</div>
-</div>
 
 
-{{!-- </div> --}}
+</div>

@@ -14,8 +14,6 @@ const cloudinary = require("cloudinary");
 
 require("./config/db.config");
 
-
-
 const app_name = require("./package.json").name;
 const debug = require("debug")(
   `${app_name}:${path.basename(__filename).split(".")[0]}`
@@ -67,6 +65,14 @@ app.use(
   })
 );
 
+const sessionCheck = (req, res, next) => {
+  if (req.session.user) {
+    next();
+  } else {
+    res.redirect("/");
+  }
+};
+
 const index = require("./routes/index");
 app.use("/", index);
 
@@ -74,15 +80,19 @@ const authRoutes = require("./routes/auth.routes");
 app.use("/", authRoutes);
 
 const homeRoutes = require("./routes/home.routes");
-app.use("/", homeRoutes);
+app.use("/", sessionCheck, homeRoutes);
 
 const postRoutes = require("./routes/post.routes");
-app.use("/", postRoutes);
+app.use("/", sessionCheck, postRoutes);
 
 const userRoutes = require("./routes/user.routes");
-app.use("/", userRoutes);
+app.use("/", sessionCheck, userRoutes);
 
 const projectRoutes = require("./routes/project.routes");
-app.use("/", projectRoutes);
+app.use("/", sessionCheck, projectRoutes);
+
+app.get("/*", (req, res, next) => {
+  res.render("404");
+});
 
 module.exports = app;

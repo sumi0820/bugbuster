@@ -1,0 +1,50 @@
+{{> sidebarLeft}}
+
+{{> sidebarRight}}
+
+
+<div class="posts__container">
+  {{#if postResult}}
+  {{#each postResult}}
+  <a class="ui card archive__card__post" href="/posts/{{this._id}}">
+    <div class="content">
+      <div class="header">
+        <h2 class="archive__card__post__text">
+          {{this.title}}
+        </h2>
+      </div>
+      <div class="meta">
+        <span class="category archive__card__post__text">{{this.issueType}} : </span>
+        <span class="category archive__card__post__text">{{this.category}}</span>
+        <div class="right floated">
+          <span class="date archive__card__post__text"> Posted on {{dateFormat postInfo.post.createdAt "MMMM Do YYYY"}}
+          </span>
+        </div>
+      </div>
+      <div class="description">
+        <p class="archive__card__post__text">{{this.description}}</p>
+      </div>
+    </div>
+    <div class="extra content">
+      <div class="left floated author">
+        <div class="status archive__card__post__text">
+          {{this.status}}
+        </div>
+      </div>
+      <div class="right floated author">
+        <img class="ui avatar image" src="{{this.user.image}}"> <span
+          class="archive__card__post__text">{{this.user.username}}</span>
+      </div>
+    </div>
+  </a>
+  {{/each}}
+
+
+  {{else}}
+  <div class="post__comments">
+    <h3>
+      There's no post...
+    </h3>
+  </div>
+  {{/if}}
+</div>

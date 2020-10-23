@@ -3,7 +3,7 @@
 {{> sidebarRight}}
 
 
-<div class="base__container">
+<div class="ui text container post__main">
 
   {{#if postInfo}}
   <div class="ui raised link card">
@@ -115,16 +115,25 @@
   </div>
 </div>
 
-
 {{#if likedChecked.post.review}}
-<div class="post__comments">
+<div class="ui divider"></div>
+<div class="ui text container post__main">
   <h2>Review</h2>
+</div>
+
+{{else}}
+<div class="post__comments">
+  <h3>
+    There's no post...
+  </h3>
+</div>
+{{/if}}
+{{/if}}
 
   {{#each likedChecked.post.review}}
+
   <div class="ui raised link card">
     <div class="content">
-      <div class="header">
-      </div>
       <div class="meta">
         <span class="category">
           <img class="ui avatar image" src="{{this.user.image}}">
@@ -138,23 +147,7 @@
         <p>{{this.comment}}</p>
       </div>
     </div>
-    <div class="extra content">
-      {{!-- <div class="right floated author">
-        <img class="ui avatar image" src="{{this.user.image}}"> Submitted by {{this.user.username}}
-      </div> --}}
-    </div>
+
   </div>
+
   {{/each}}
-</div>
-{{else}}
-<div class="post__comments">
-  <h3>
-    There's no review yet...
-  </h3>
-</div>
-
-{{/if}}
-
-{{/if}}
-
-</div>

@@ -2,27 +2,27 @@
 
 {{> sidebarRight}}
 
-<div class="base__container">
-  <div class="form__container">
-    <div class="form__containerChild">
+<div class="center-screen">
+  <div class="ui concenter aligned grid">
+    <div class="ui items ">
       <form class="ui form " method="POST" action="/post/create" enctype="multipart/form-data">
         <h2>Create New Post</h2>
 
         <div class="field">
           <label for="title">Issue Title</label>
-          <input name="title" type="text" class="form-control" id="title">
+          <input name="title" type="text" class="form-control" id="title" required>
         </div>
 
         <div class="field">
           <label for="description">Description</label>
-          <textarea name="description" type="text" class="form-control" id="description"></textarea>
+          <textarea name="description" type="text" class="form-control" id="description" required></textarea>
         </div>
 
         <div class="two fields">
 
           <div class="field">
             <label>Issue On</label>
-            <select class="ui fluid dropdown" name="issueType">
+            <select class="ui fluid dropdown" name="issueType" required>
               <option  value="">Please select</option>
               <option value="Class Activity">Class Activity</option>
               <option value="LAB">LAB</option>
@@ -33,7 +33,7 @@
 
           <div class="field">
             <label>Category</label>
-            <select class="ui fluid dropdown" name="category">
+            <select class="ui fluid dropdown" name="category" required>
               <option  value="">Please select</option>
               <option value="HTML">HTML</option>
               <option value="CSS">CSS</option>

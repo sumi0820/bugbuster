@@ -21,7 +21,6 @@ router.post("/signup", (req, res) => {
         loginType
       })
         .then((user) => {
-          // console.log("User added: ", user);
           req.session.loggedInUser = user;
           res.locals.loggedInUser = req.session.loggedInUser
           res.redirect("/home");
@@ -81,23 +80,5 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-// router.get("/content/main", (req, res) => {
-//   let user = req.session.loggedInUser;
-//   if (!user) {
-    
-//     res.redirect("/signin");
-//   } else {
-//     res.render("content/main", { user });
-//   }
-// });
-
-// router.get("/content/private", (req, res) => {
-//     let user = req.session.loggedInUser;
-//     if (!user) {
-//       res.redirect("/signin");
-//     } else {
-//       res.render("content/private", { user });
-//     }
-//   });
 
 module.exports = router;

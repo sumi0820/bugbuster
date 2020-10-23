@@ -66,7 +66,6 @@ app.use(
 );
 
 const sessionCheck = (req, res, next) => {
-  console.log(req.session);
   if (req.session.loggedInUser) {
     next();
   } else {

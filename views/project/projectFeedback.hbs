@@ -3,24 +3,21 @@
 {{> sidebarRight}}
 
 
-<div class="base__container">
-
-  <div class="project__header">
+<div class="center-screen">
+  <div class="ui text container">
     <form class="ui form " method="POST" action="/project/{{projectId}}/feedback">
-      <div class="ui card">
-        <div class="content">
-          <div class="header">
-            Feedback Form
-          </div>
-          <div class="field">
-            <textarea type="text" name='comment' class="form-control"
-              placeholder="Please add your feedback to the project."></textarea>
-          </div>
-          <button type="submit" class="ui fluid yellow right floated">
-            <i class="save large outline icon"></i>
-          </button>
-        </div>
-    </form>
+      <h2>Add Your Feedback</h2>
+      <div class="field">
+        <textarea type="text" name='comment' class="form-control"
+          placeholder="Please add your feedback to the project."></textarea>
+      </div>
+      <button type="submit" class="ui large teal button fluid centered">
+        <i class="save large outline icon"></i>
+        Add feedback
+      </button>
   </div>
+</div>
+</form>
+</div>
 
 </div>

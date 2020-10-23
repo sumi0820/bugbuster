@@ -10,8 +10,8 @@ BugBuster is a question and answer site with a function to manage your projects.
 - LT/TAs can visit open projects and give some feedbacks.
 - It's web-based, but responsive!  
 
-<Test account>
-- student view
+<Test account>. 
+- student view. 
     - email: steve@gmail.com
     - pass: test12345
 

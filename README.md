@@ -2,8 +2,14 @@
 
 ## Description
 
-BugBuster is a question and answer site with a function to manage your projects. It's web-based, but responsive!
- 
+BugBuster is a question and answer site with a function to manage your projects. 
+
+- Post issues you are facing through class activities, LAB, projects.
+- Exchange solutions to reply to the post.
+- Start your new project, and add tasks that you need to kill!
+- LT/TAs can visit open projects and give some feedbacks.
+- It's web-based, but responsive!  
+
 
 ## Links
 

@@ -1,16 +1,20 @@
 # BugBuster
+![Main](/public/images/main.png)
 
 ## Description
 
 BugBuster is a question and answer site with a function to manage your projects. 
 
+[Demo here](https://bugbuster2020.herokuapp.com/)
+
+## How to use
 - Post issues you are facing through class activities, LAB, projects.
 - Exchange solutions to reply to the post.
 - Start your new project, and add tasks that you need to kill!
 - LT/TAs can visit open projects and give some feedbacks.
 - It's web-based, but responsive!  
 
-<Test account>
+Test account
 - student view
     - email: steve@gmail.com
     - pass: test12345

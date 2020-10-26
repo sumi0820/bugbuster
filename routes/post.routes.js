@@ -4,9 +4,8 @@ const router = express.Router();
 const PostModel = require("../models/Post.model");
 const ReviewModel = require("../models/Review.model");
 const ProjectModel = require("../models/Project.model");
-const upload = require("../config/cloudinary.config");
 require("../config/cloudinary.config");
-const { parser, storage } = require("../config/cloudinary.config");
+const { parser } = require("../config/cloudinary.config");
 
 /* GET home page */
 router.get("/post/create", (req, res, next) => {
@@ -104,9 +103,9 @@ router.post("/posts/:postId/unlike", (req, res) => {
   PostModel.findById(postId)
     .populate("like")
     .then((post) => {
-      let likeArray = post.like.filter((like) => {
-        return like.email !== res.locals.isLoggedIn.email;
-      });
+      let likeArray = post.like.filter(
+        (like) => like.email !== res.locals.isLoggedIn.email
+      );
       PostModel.findByIdAndUpdate(postId, {
         like: likeArray,
         ...req.body,
@@ -134,11 +133,9 @@ router.post("/posts/:postId/review", (req, res) => {
     user: res.locals.loggedInUser,
     ...req.body,
   }).then((review) => {
-   
     PostModel.findByIdAndUpdate(postId, { $push: { review: review } })
 
       .then((post) => {
-   
         res.locals.loggedInUser = req.session.loggedInUser;
         res.redirect(`/posts/${postId}`);
       })
@@ -204,15 +201,7 @@ router.get("/allPosts", (req, res, next) => {
   PostModel.find()
     .populate("user")
     .then((allPosts) => {
-      let sortedByStatus = allPosts.sort((a, b) => {
-        if (a.createdAt < b.createdAt) {
-          return 1;
-        } else if (a.createdAt > b.createdAt) {
-          return -1;
-        } else {
-          return 0;
-        }
-      });
+      let sortedByStatus = allPosts.sort((a, b) => b.createdAt - a.createdAt);
       const loggedInUser = req.session.loggedInUser;
 
       res.render("post/sortedPosts", { sortedByStatus, loggedInUser });
@@ -232,23 +221,14 @@ router.get("/openIssues", (req, res, next) => {
       let sortedByStatus = posts
         .filter((post) => {
           return (
-            post.status === "Pending Reply" ||
-            post.status === "Open" ||
-            post.status === "Reopen"
+            (post.status === "Pending Reply" ||
+              post.status === "Open" ||
+              post.status === "Reopen") &&
+            post.user._id == userId
           );
         })
-        .filter((post) => {
-          return post.user._id == userId;
-        })
-        .sort((a, b) => {
-          if (a.createdAt < b.createdAt) {
-            return 1;
-          } else if (a.createdAt > b.createdAt) {
-            return -1;
-          } else {
-            return 0;
-          }
-        });
+
+        .sort((a, b) => b.createdAt - a.createdAt);
       const loggedInUser = req.session.loggedInUser;
 
       res.render("post/sortedPosts", { sortedByStatus, loggedInUser });
@@ -267,36 +247,18 @@ router.get("/archive", (req, res, next) => {
     .populate("user")
     .then((posts) => {
       const sortedByStatus = posts
-        .filter((post) => {
-          return post.status === "Closed" && post.user._id == userId;
-        })
-        .sort((a, b) => {
-          if (a.createdAt < b.createdAt) {
-            return 1;
-          } else if (a.createdAt > b.createdAt) {
-            return -1;
-          } else {
-            return 0;
-          }
-        });
+        .filter((post) => post.status === "Closed" && post.user._id == userId)
+        .sort((a, b) => b.createdAt - a.createdAt);
+
       const loggedInUser = req.session.loggedInUser;
 
       ProjectModel.find()
         .populate("user")
         .then((projects) => {
           const projectSortedByStatus = projects
-            .filter((project) => {
-              return project.status === "Closed" && project.user._id == userId;
-            })
-            .sort((a, b) => {
-              if (a.createdAt < b.createdAt) {
-                return 1;
-              } else if (a.createdAt > b.createdAt) {
-                return -1;
-              } else {
-                return 0;
-              }
-            });
+            .filter((project) => project.status === "Closed" && project.user._id == userId)
+            .sort((a, b) => b.createdAt - a.createdAt);
+
           res.render("post/sortedPosts", {
             sortedByStatus,
             projectSortedByStatus,

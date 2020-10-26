@@ -21,8 +21,7 @@ router.get("/project/:projectId", (req, res, next) => {
           .populate("user")
           .then((feedbacks) => {
             res.locals.loggedInUser = req.session.loggedInUser;
-            project.user._id == req.session.loggedInUser._id ? owner = true : owner = false
-            console.log(owner);
+            owner = project.user._id == req.session.loggedInUser._id
             res.render("project/project", {
               project,
               tasks,

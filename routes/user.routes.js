@@ -4,9 +4,8 @@ const UserModel = require("../models/User.model");
 const PostModel = require("../models/Post.model");
 const ProjectModel = require("../models/Project.model");
 
-const upload = require("../config/cloudinary.config");
 require("../config/cloudinary.config");
-const { parser, storage } = require("../config/cloudinary.config");
+const { parser } = require("../config/cloudinary.config");
 
 router.get("/dashboard/:userId", (req, res, next) => {
   let userId = req.params.userId;
@@ -17,36 +16,18 @@ router.get("/dashboard/:userId", (req, res, next) => {
       .populate("user")
       .then((posts) => {
         let yourPosts = posts
-          .filter((post) => {
-            return post.user.email == user.email;
-          })
+          .filter((post) => post.user.email == user.email)
           .splice(0, 5)
-          .sort((a, b) => {
-            if (a.createdAt < b.createdAt) {
-              return 1;
-            } else if (a.createdAt > b.createdAt) {
-              return -1;
-            } else {
-              return 0;
-            }
-          });
+          .sort((a, b) => b.createdAt - a.createdAt);
+
         ProjectModel.find()
           .populate("user")
           .then((projects) => {
             let yourProjects = projects
-              .filter((project) => {
-                return project.user.email == user.email;
-              })
+              .filter((project) => project.user.email == user.email)
               .splice(0, 5)
-              .sort((a, b) => {
-                if (a.createdAt < b.createdAt) {
-                  return 1;
-                } else if (a.createdAt > b.createdAt) {
-                  return -1;
-                } else {
-                  return 0;
-                }
-              });
+              .sort((a, b) => b.createdAt - a.createdAt);
+
             let profile = { user, yourPosts, yourProjects };
             res.render("user/dashboard", { profile });
           });
